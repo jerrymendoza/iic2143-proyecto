@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% if @local.imagen.attached? %>
+    <image src="<%=(url_for(@local.imagen))%>">
+  <% end %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @local.nombre %>
+</p>
+
+<p>
+  <strong>Dueno:</strong>
+  <%= @local.dueno %>
+</p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @local.comuna %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @local.descripcion %>
+</p>
+
+<p>
+  <strong>Aceptado:</strong>
+  <%= @local.aceptado %>
+</p>
+
+<%= link_to 'Edit', edit_local_path(@local) %> |
+<%= link_to 'Back', locals_path %>
