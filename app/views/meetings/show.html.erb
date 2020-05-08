@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Matcher 1:</strong>
-  <%= @meeting.matcher_1 %>
-</p>
-
-<p>
-  <strong>Matcher 2:</strong>
-  <%= @meeting.matcher_2 %>
-</p>
-
-<p>
   <strong>Local:</strong>
   <%= @meeting.local %>
+</p>
+
+<p>
+  <strong>Like:</strong>
+  <%= @meeting.like %>
 </p>
 
 <p>
@@ -23,11 +18,6 @@
 <p>
   <strong>Hora:</strong>
   <%= @meeting.hora %>
-</p>
-
-<p>
-  <strong>Match:</strong>
-  <%= @meeting.match %>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_024521) do
-
+ActiveRecord::Schema.define(version: 2020_05_08_215428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,12 +100,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_024521) do
   end
 
   create_table "meetings", force: :cascade do |t|
-    t.string "matcher_1"
-    t.string "matcher_2"
     t.string "local"
-    t.time "fecha"
-    t.date "hora"
-    t.boolean "match"
+    t.integer "like"
+    t.date "fecha"
+    t.time "hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

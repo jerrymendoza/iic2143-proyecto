@@ -16,10 +16,8 @@ class MeetingsTest < ApplicationSystemTestCase
 
     fill_in "Fecha", with: @meeting.fecha
     fill_in "Hora", with: @meeting.hora
+    fill_in "Like", with: @meeting.like
     fill_in "Local", with: @meeting.local
-    check "Match" if @meeting.match
-    fill_in "Matcher 1", with: @meeting.matcher_1
-    fill_in "Matcher 2", with: @meeting.matcher_2
     click_on "Create Meeting"
 
     assert_text "Meeting was successfully created"
@@ -32,10 +30,8 @@ class MeetingsTest < ApplicationSystemTestCase
 
     fill_in "Fecha", with: @meeting.fecha
     fill_in "Hora", with: @meeting.hora
+    fill_in "Like", with: @meeting.like
     fill_in "Local", with: @meeting.local
-    check "Match" if @meeting.match
-    fill_in "Matcher 1", with: @meeting.matcher_1
-    fill_in "Matcher 2", with: @meeting.matcher_2
     click_on "Update Meeting"
 
     assert_text "Meeting was successfully updated"

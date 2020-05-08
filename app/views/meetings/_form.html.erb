@@ -12,33 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :matcher_1 %>
-    <%= form.text_field :matcher_1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :matcher_2 %>
-    <%= form.text_field :matcher_2 %>
-  </div>
-
-  <div class="field">
     <%= form.label :local %>
     <%= form.text_field :local %>
   </div>
 
   <div class="field">
+    <%= form.label :like %>
+    <%= form.number_field :like %>
+  </div>
+
+  <div class="field">
     <%= form.label :fecha %>
-    <%= form.time_select :fecha %>
+    <%= form.date_select :fecha %>
   </div>
 
   <div class="field">
     <%= form.label :hora %>
-    <%= form.date_select :hora %>
-  </div>
-
-  <div class="field">
-    <%= form.label :match %>
-    <%= form.check_box :match %>
+    <%= form.time_select :hora %>
   </div>
 
   <div class="actions">

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :meetings
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
   get 'gustos', to: 'gustos#index'
@@ -27,7 +28,6 @@ Rails.application.routes.draw do
   resources :comentarios
   resources :comunas
   resources :locals
-  resources :meetings
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'hello#index'
 end
