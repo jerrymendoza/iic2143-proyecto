@@ -1,8 +1,55 @@
 Rails.application.routes.draw do
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
   devise_for :propietario_locals, path: 'locales', controllers: {
-    sessions: 'locales/sessions',
-    passwords: 'locales/passwords',
-    registrations: 'locales/registrations'
+    sessions: 'propietario_locals/sessions',
+    passwords: 'propietario_locals/passwords',
+    registrations: 'propietario_locals/registrations'
 }
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions',
