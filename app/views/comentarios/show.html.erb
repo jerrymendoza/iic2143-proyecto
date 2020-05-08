@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matcher:</strong>
+  <%= @comentario.matcher %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @comentario.local %>
+</p>
+
+<p>
+  <strong>Valoracion:</strong>
+  <%= @comentario.valoracion %>
+</p>
+
+<p>
+  <strong>Contenido:</strong>
+  <%= @comentario.contenido %>
+</p>
+
+<%= link_to 'Edit', edit_comentario_path(@comentario) %> |
+<%= link_to 'Back', comentarios_path %>
