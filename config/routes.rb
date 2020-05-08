@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     registrations: 'matchers/registrations'
 }
 
+  resources :comentarios
   resources :comunas
   resources :locals
   resources :meetings
