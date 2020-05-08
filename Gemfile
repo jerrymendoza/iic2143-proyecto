@@ -67,3 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Windows gems
 gem 'wdm', '>= 0.1.0',platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+gem 'devise'
+gem 'rails_admin', '~> 2.0'
