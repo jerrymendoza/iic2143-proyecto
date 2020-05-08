@@ -1,0 +1,21 @@
+<h1>Matchers#index</h1>
+<p>Find me in app/views/matchers/index.html.erb</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matchers.each do |matcher| %>
+      <tr>
+        <td><%= matcher.nombre %></td>
+        <td><%= matcher.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

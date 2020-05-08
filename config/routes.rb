@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'matchers/index'
+  get 'admins/index'
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
   get 'gustos', to: 'gustos#index'
@@ -23,7 +25,8 @@ Rails.application.routes.draw do
     passwords: 'matchers/passwords',
     registrations: 'matchers/registrations'
 }
-
+  match '/admins',   to: 'admins#index',   via: 'get'
+  match '/matchers',   to: 'matchers#index',   via: 'get'
   resources :comunas
   resources :locals
   resources :meetings
