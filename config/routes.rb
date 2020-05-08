@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
-<<<<<<< HEAD
   resources :likes
   resources :meetings
-=======
-  get 'matchers/index'
-  get 'admins/index'
->>>>>>> nav
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
   get 'gustos', to: 'gustos#index'
