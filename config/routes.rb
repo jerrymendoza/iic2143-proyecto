@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :propietario_locals
   devise_for :admins
   devise_for :matchers
   resources :comunas
