@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<!--
+https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042-->
 <p>
   <% if @local.imagen.attached? %>
     <image src="<%=(url_for(@local.imagen))%>">
