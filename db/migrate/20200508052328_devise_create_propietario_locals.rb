@@ -36,11 +36,19 @@ class DeviseCreatePropietarioLocals < ActiveRecord::Migration[5.2]
       t.string :nombre
 
       t.timestamps null: false
+      
     end
 
     add_index :propietario_locals, :email,                unique: true
     add_index :propietario_locals, :reset_password_token, unique: true
     # add_index :propietario_locals, :confirmation_token,   unique: true
     # add_index :propietario_locals, :unlock_token,         unique: true
+    PropietarioLocal.create! do |u|
+      u.email     = 'local@local.com'
+      u.password    = 'password'
+      u.rut = '111111111'
+      u.nombre = 'Propietario Local Test'
+    end
+
   end
 end

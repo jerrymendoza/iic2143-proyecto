@@ -39,11 +39,24 @@ class DeviseCreateMatchers < ActiveRecord::Migration[5.2]
       t.string :descripcion
 
       t.timestamps null: false
+
     end
 
     add_index :matchers, :email,                unique: true
     add_index :matchers, :reset_password_token, unique: true
     # add_index :matchers, :confirmation_token,   unique: true
     # add_index :matchers, :unlock_token,         unique: true
+
+     # Initialize first account:
+     Matcher.create! do |u|
+      u.email     = 'matcher@matcher.com'
+      u.password    = 'password'
+      u.rut = '111111111'
+      u.nombre = 'Matcher Test'
+      u.telefono = 91111111
+      u.edad = 1
+      u.descripcion = 'Test Matcher'
+    end
+    
   end
 end

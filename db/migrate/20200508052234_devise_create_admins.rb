@@ -36,11 +36,19 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       t.string :nombre
 
       t.timestamps null: false
+      
     end
 
     add_index :admins, :email,                unique: true
     add_index :admins, :reset_password_token, unique: true
     # add_index :admins, :confirmation_token,   unique: true
     # add_index :admins, :unlock_token,         unique: true
+    Admin.create! do |u|
+      u.email     = 'admin@admin.com'
+      u.password    = 'password'
+      u.rut = '111111111'
+      u.nombre = 'Admin Test'
+    end
+
   end
 end
