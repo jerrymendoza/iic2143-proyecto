@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_162956) do
+ActiveRecord::Schema.define(version: 2020_05_08_202216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_05_08_162956) do
   create_table "gustos", force: :cascade do |t|
     t.string "titulo"
     t.text "descripcion"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.string "matcher_1"
+    t.string "matcher_2"
+    t.string "local"
+    t.time "fecha"
+    t.date "hora"
+    t.boolean "match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
