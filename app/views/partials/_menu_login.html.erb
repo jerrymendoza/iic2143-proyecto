@@ -1,0 +1,9 @@
+<% if !matcher_signed_in? || !admin_signed_in? || !propietario_local_signed_in? %>
+
+<ul>
+    <li><%= link_to 'Login Matcher', new_matcher_session_path %></li>
+    <li><%= link_to 'Login Propietario de Local', new_propietario_local_session_path %></li>
+    <li><%= link_to 'Login Admin', new_admin_session_path %></li>
+</ul>
+
+<% end %>

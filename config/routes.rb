@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
+<<<<<<< HEAD
   resources :likes
   resources :meetings
+=======
+  get 'matchers/index'
+  get 'admins/index'
+>>>>>>> nav
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
   get 'gustos', to: 'gustos#index'
@@ -27,6 +32,8 @@ Rails.application.routes.draw do
 }
 
   resources :comentarios
+  match '/admins',   to: 'admins#index',   via: 'get'
+  match '/matchers',   to: 'matchers#index',   via: 'get'
   resources :comunas
   resources :locals
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
