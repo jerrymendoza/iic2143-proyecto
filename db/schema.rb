@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_202216) do
   create_table "gustos", force: :cascade do |t|
     t.string "titulo"
     t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locals", force: :cascade do |t|
