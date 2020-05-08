@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
   get 'gustos', to: 'gustos#index'
@@ -6,6 +7,23 @@ Rails.application.routes.draw do
   get 'gustos/:id/edit', to: 'gustos#edit', as:'gustos_edit'
   patch 'gustos/:id', to: "gustos#update"
   delete 'gustos/:id', to: "gustos#destroy"
+
+  devise_for :propietario_locals, path: 'locales', controllers: {
+    sessions: 'propietario_locals/sessions',
+    passwords: 'propietario_locals/passwords',
+    registrations: 'propietario_locals/registrations'
+}
+  devise_for :admins, path: 'admins', controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+}
+  devise_for :matchers, path: 'matchers', controllers: {
+    sessions: 'matchers/sessions',
+    passwords: 'matchers/passwords',
+    registrations: 'matchers/registrations'
+}
+
   resources :comunas
   resources :locals
   resources :meetings
