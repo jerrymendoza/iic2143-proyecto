@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+
+# https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
