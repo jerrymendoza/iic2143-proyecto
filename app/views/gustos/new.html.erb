@@ -1,0 +1,16 @@
+<p id='notice'><%= notice %></p>
+
+<h1>Nuevo Gusto</h1>
+<%= form_with(model: @gusto, method: :post) do |form| %>
+  <div class= 'field'>
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo %>
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+
+    <div class='actions'>
+      <%=form.submit %>
+    </div>
+
+<%end%>
+<%= link_to 'Back', gustos_path %>

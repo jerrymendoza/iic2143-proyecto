@@ -1,0 +1,19 @@
+<h1>Matchers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matchers.each do |matcher| %>
+      <tr>
+        <td><%= matcher.nombre %></td>
+        <td><%= matcher.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

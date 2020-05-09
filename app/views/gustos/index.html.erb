@@ -1,0 +1,27 @@
+<h1>Gustos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gusto.each do |gusto| %>
+      <tr>
+        <td><%= gusto.titulo %></td>
+        <td><%= gusto.descripcion %></td>
+        <td><%= link_to 'Ver detalles', gusto_path(gusto.id)%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<br>
+
+
+
+<%= link_to 'Añadir Gusto', gustos_new_path %>
