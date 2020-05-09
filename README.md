@@ -4,6 +4,8 @@
 Link app:
 https://grupo-54.herokuapp.com/
 
+Diagrama ER:
+docs/DiagramaER.png
 
 Things you may want to cover:
 
