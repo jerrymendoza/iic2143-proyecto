@@ -8,6 +8,7 @@
       <th>Nombre</th>
       <th>Dueno</th>
       <th>Comuna</th>
+      <th>Direccion</th>
       <th>Descripcion</th>
       <th>Aceptado</th>
       <th colspan="3"></th>
@@ -18,8 +19,8 @@
     <% @locals.each do |local| %>
       <tr>
         <td><%= local.nombre %></td>
-        <td><%= local.dueno %></td>
         <td><%= local.comuna.name %></td>
+        <td><%= local.direccion %></td>
         <td><%= local.descripcion %></td>
         <td><%= local.aceptado %></td>
         <td><%= link_to 'Detalles', local %></td>

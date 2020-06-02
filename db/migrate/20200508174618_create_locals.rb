@@ -6,6 +6,7 @@ class CreateLocals < ActiveRecord::Migration[5.2]
       t.text :descripcion
       t.boolean :aceptado
       t.belongs_to  :comuna
+      t.string :direccion
       t.timestamps
     end
   end

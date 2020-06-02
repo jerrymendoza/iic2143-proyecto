@@ -22,13 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :dueno %>
-    <%= form.text_field :dueno %>
+    <%= form.label :comuna %>
+    <%= form.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
   </div>
 
   <div class="field">
-    <%= form.label :comuna %>
-    <%= form.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion %>
   </div>
 
   <div class="field">

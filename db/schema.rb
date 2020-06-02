@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
     t.text "descripcion"
     t.boolean "aceptado"
     t.bigint "comuna_id"
+    t.string "direccion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comuna_id"], name: "index_locals_on_comuna_id"

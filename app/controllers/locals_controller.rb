@@ -26,6 +26,7 @@ class LocalsController < ApplicationController
   # POST /locals
   # POST /locals.json
   def create
+    @comunas = Comuna.all
     @local = Local.new(local_params)
     respond_to do |format|
       if @local.save
@@ -41,6 +42,7 @@ class LocalsController < ApplicationController
   # PATCH/PUT /locals/1
   # PATCH/PUT /locals/1.json
   def update
+    @comunas = Comuna.all
     respond_to do |format|
       if @local.update(local_params)
         format.html { redirect_to @local, notice: 'Local was successfully updated.' }
@@ -70,6 +72,6 @@ class LocalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def local_params
-      params.require(:local).permit(:nombre, :dueno, :comuna_id, :descripcion, :aceptado, :imagen)
+      params.require(:local).permit(:nombre, :comuna_id, :direccion ,:descripcion, :aceptado, :imagen)
     end
 end
