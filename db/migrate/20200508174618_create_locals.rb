@@ -2,11 +2,10 @@ class CreateLocals < ActiveRecord::Migration[5.2]
   def change
     create_table :locals do |t|
       t.string :nombre
-      t.string :dueno
-      t.string :comuna
+      t.belongs_to  :propietario_local
       t.text :descripcion
       t.boolean :aceptado
-
+      t.belongs_to  :comuna
       t.timestamps
     end
   end

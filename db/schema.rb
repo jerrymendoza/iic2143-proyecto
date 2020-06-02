@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
-# https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -53,12 +51,14 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
   end
 
   create_table "comentarios", force: :cascade do |t|
-    t.string "matcher"
-    t.string "local"
+    t.bigint "matcher_id"
+    t.bigint "local_id"
     t.integer "valoracion"
     t.text "contenido"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["local_id"], name: "index_comentarios_on_local_id"
+    t.index ["matcher_id"], name: "index_comentarios_on_matcher_id"
   end
 
   create_table "comunas", force: :cascade do |t|
@@ -70,24 +70,30 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
   create_table "gustos", force: :cascade do |t|
     t.string "titulo"
     t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "likes", force: :cascade do |t|
-    t.string "matcher_1"
-    t.string "matcher_2"
+    t.bigint "matcher1_id"
+    t.bigint "matcher2_id"
     t.boolean "match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["matcher1_id"], name: "index_likes_on_matcher1_id"
+    t.index ["matcher2_id"], name: "index_likes_on_matcher2_id"
   end
 
   create_table "locals", force: :cascade do |t|
     t.string "nombre"
-    t.string "dueno"
-    t.string "comuna"
+    t.bigint "propietario_local_id"
     t.text "descripcion"
     t.boolean "aceptado"
+    t.bigint "comuna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comuna_id"], name: "index_locals_on_comuna_id"
+    t.index ["propietario_local_id"], name: "index_locals_on_propietario_local_id"
   end
 
   create_table "matchers", force: :cascade do |t|
@@ -101,19 +107,23 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
     t.integer "telefono"
     t.integer "edad"
     t.string "descripcion"
+    t.bigint "comuna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comuna_id"], name: "index_matchers_on_comuna_id"
     t.index ["email"], name: "index_matchers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_matchers_on_reset_password_token", unique: true
   end
 
   create_table "meetings", force: :cascade do |t|
-    t.string "local"
-    t.integer "like"
+    t.bigint "local_id"
+    t.bigint "like_id"
     t.date "fecha"
     t.time "hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["like_id"], name: "index_meetings_on_like_id"
+    t.index ["local_id"], name: "index_meetings_on_local_id"
   end
 
   create_table "propietario_locals", force: :cascade do |t|
@@ -131,4 +141,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_224527) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "matchers", column: "matcher1_id"
+  add_foreign_key "likes", "matchers", column: "matcher2_id"
 end
