@@ -37,7 +37,7 @@ class DeviseCreateMatchers < ActiveRecord::Migration[5.2]
       t.integer :telefono
       t.integer :edad
       t.string :descripcion
-
+      t.belongs_to  :comuna
       t.timestamps null: false
 
     end
