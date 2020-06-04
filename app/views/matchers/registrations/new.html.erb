@@ -4,6 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -19,6 +24,46 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :edad %>
+    <%= f.number_field :edad %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rut %>
+    <%= f.text_field :rut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :imagen %>
+    <%= f.file_field :imagen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comuna %>
+    <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+     <%= f.label "Gustos" %>
+    <% @gustos.each do |gusto| %>
+    <div>
+      <%= check_box_tag "gustos_ids[]", gusto.id %>
+      <%= gusto.titulo %>
+    </div>
+    <% end %>
   </div>
 
   <div class="actions">
