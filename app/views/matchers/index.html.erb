@@ -11,7 +11,7 @@
   <tbody>
     <% @matchers.each do |matcher| %>
       <tr>
-        <td><%= matcher.nombre %></td>
+        <td><%= link_to matcher.nombre, matcher_path(matcher.id) %></td>
         <td><%= matcher.email %></td>
       </tr>
     <% end %>

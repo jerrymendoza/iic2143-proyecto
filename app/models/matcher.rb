@@ -1,4 +1,6 @@
 class Matcher < ApplicationRecord
+  validates :nombre, :edad, :rut, :imagen, :telefono, :comuna, :descripcion, presence: true
+  has_one_attached :imagen
   belongs_to :comuna, optional: true
   has_many :comentarios
   has_and_belongs_to_many :gustos
@@ -8,5 +10,17 @@ class Matcher < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  after_create :guardar_gustos
 
+  def gustos_ids=(value)
+    @gustos_ids = value
+  end
+
+  private
+
+  def guardar_gustos
+    @gustos_ids.each do |gusto_id|
+      GustosMatchers.create(gusto_id: gusto_id, matcher_id: self.id)
+    end
+  end
 end
