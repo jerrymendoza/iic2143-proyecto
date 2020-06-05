@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:show, :edit, :update, :destroy]
+  before_action :set_like, only: %i[show edit update destroy]
 
   # GET /likes
   # GET /likes.json
@@ -9,8 +9,7 @@ class LikesController < ApplicationController
 
   # GET /likes/1
   # GET /likes/1.json
-  def show
-  end
+  def show; end
 
   # GET /likes/new
   def new
@@ -18,8 +17,7 @@ class LikesController < ApplicationController
   end
 
   # GET /likes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /likes
   # POST /likes.json
@@ -62,13 +60,14 @@ class LikesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_like
-      @like = Like.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def like_params
-      params.require(:like).permit(:matcher_1, :matcher_2, :match)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_like
+    @like = Like.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def like_params
+    params.require(:like).permit(:matcher_1, :matcher_2, :match)
+  end
 end

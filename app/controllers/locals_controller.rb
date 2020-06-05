@@ -1,5 +1,5 @@
 class LocalsController < ApplicationController
-  before_action :set_local, only: [:show, :edit, :update, :destroy]
+  before_action :set_local, only: %i[show edit update destroy]
 
   # GET /locals
   # GET /locals.json
@@ -9,8 +9,7 @@ class LocalsController < ApplicationController
 
   # GET /locals/1
   # GET /locals/1.json
-  def show
-  end
+  def show; end
 
   # GET /locals/new
   def new
@@ -65,13 +64,14 @@ class LocalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_local
-      @local = Local.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def local_params
-      params.require(:local).permit(:nombre, :comuna_id, :direccion ,:descripcion, :aceptado, :imagen)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_local
+    @local = Local.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def local_params
+    params.require(:local).permit(:nombre, :comuna_id, :direccion, :descripcion, :aceptado, :imagen)
+  end
 end
