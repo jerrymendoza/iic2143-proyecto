@@ -1,35 +1,18 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: [:show, :edit, :update, :destroy]
-
-  # GET /comentarios
-  # GET /comentarios.json
-  def index
-    @comentarios = Comentario.all
-  end
-
-  # GET /comentarios/1
-  # GET /comentarios/1.json
-  def show
-  end
-
-  # GET /comentarios/new
-  def new
-    @comentario = Comentario.new
-  end
-
-  # GET /comentarios/1/edit
-  def edit
-  end
+  before_action :set_comentario, only: [:update, :destroy]
+  before_action :set_local
+  
 
   # POST /comentarios
   # POST /comentarios.json
   def create
-    @comentario = Comentario.new(comentario_params)
+    @comentario = current_matcher.comentarios.new(comentario_params)
+    @comentario.local = @local
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully created.' }
-        format.json { render :show, status: :created, location: @comentario }
+        format.html { redirect_to @local, notice: 'Comentario was successfully created.' }
+        format.json { render :show, status: :created, location: @local }
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
@@ -42,8 +25,8 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to @comentario, notice: 'Comentario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comentario }
+        format.html { redirect_to @local, notice: 'Comentario was successfully updated.' }
+        format.json { render :show, status: :ok, location: @local }
       else
         format.html { render :edit }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
@@ -56,7 +39,7 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to comentarios_url, notice: 'Comentario was successfully destroyed.' }
+      format.html { redirect_to @local, notice: 'Comentario was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +50,12 @@ class ComentariosController < ApplicationController
       @comentario = Comentario.find(params[:id])
     end
 
+    def set_local
+      @local = Local.find(params[:local_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def comentario_params
-      params.require(:comentario).permit(:matcher, :local, :valoracion, :contenido)
+      params.require(:comentario).permit(:valoracion, :contenido)
     end
 end

@@ -10,6 +10,7 @@ class LocalsController < ApplicationController
   # GET /locals/1
   # GET /locals/1.json
   def show
+    @comentario = Comentario.new
   end
 
   # GET /locals/new
@@ -21,6 +22,7 @@ class LocalsController < ApplicationController
   # GET /locals/1/edit
   def edit
     @comunas = Comuna.all
+    @locals = Local.all
   end
 
   # POST /locals
