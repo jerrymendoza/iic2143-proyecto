@@ -4,15 +4,21 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Email</th>
+      <th>Foto</th>
+      <th>Like</th>
     </tr>
   </thead>
 
   <tbody>
     <% @matchers.each do |matcher| %>
       <tr>
-        <td><%= matcher.nombre %></td>
-        <td><%= matcher.email %></td>
+        <td><%= link_to matcher.nombre, matcher_path(matcher.id) %></td>
+        <td>
+          <% if matcher.imagen.attached? %>
+            <image src="<%=(url_for(matcher.imagen))%>" width = '150px' >
+          <% end %>
+        </td>
+        <td><td><%= button_to 'Like', {:controller => "likes", :action => "create", :matcher => matcher} ,:method=>:post  %></td>
       </tr>
     <% end %>
   </tbody>

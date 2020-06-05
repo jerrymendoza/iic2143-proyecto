@@ -1,17 +1,16 @@
 class ComunasController < ApplicationController
-  before_action :set_comuna, only: [:show, :edit, :update, :destroy]
+  before_action :set_comuna, only: %i[show edit update destroy]
+  before_action :authenticate_admin!, only: %i[new edit create update destroy]
 
   # GET /comunas
   # GET /comunas.json
   def index
     @comunas = Comuna.all
-    @zapatos = [1, "two", 3.0]
   end
 
   # GET /comunas/1
   # GET /comunas/1.json
-  def show
-  end
+  def show; end
 
   # GET /comunas/new
   def new
@@ -19,8 +18,7 @@ class ComunasController < ApplicationController
   end
 
   # GET /comunas/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /comunas
   # POST /comunas.json
@@ -63,13 +61,14 @@ class ComunasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comuna
-      @comuna = Comuna.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comuna_params
-      params.require(:comuna).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comuna
+    @comuna = Comuna.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comuna_params
+    params.require(:comuna).permit(:name)
+  end
 end

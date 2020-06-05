@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% if @matcher.imagen.attached? %>
+    <image src="<%=(url_for(@matcher.imagen))%>" width = '350px' >
+  <% end %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @matcher.nombre %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @matcher.edad %>
+</p>
+
+<p>
+  <strong>Rut:</strong>
+  <%= @matcher.rut %>
+</p>
+
+<p>
+  <strong>Descripción:</strong>
+  <%= @matcher.descripcion %>
+</p>
+
+<p>
+  <strong>Gustos:</strong>
+  <% @matcher.gustos.each do |gusto| %>
+    <%= gusto.titulo %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @matcher.comuna.name if not @matcher.comuna.nil?  %>
+</p>

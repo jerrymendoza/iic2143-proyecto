@@ -1,16 +1,16 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: [:show, :edit, :update, :destroy]
+  before_action :set_like, only: %i[show edit update destroy]
+  before_action :authenticate_matcher!, only: %i[new create]
 
   # GET /likes
   # GET /likes.json
   def index
-    @likes = Like.all
+    @likes = Like.where(matcher1: current_matcher)
   end
 
   # GET /likes/1
   # GET /likes/1.json
-  def show
-  end
+  def show; end
 
   # GET /likes/new
   def new
@@ -18,13 +18,13 @@ class LikesController < ApplicationController
   end
 
   # GET /likes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /likes
   # POST /likes.json
   def create
-    @like = Like.new(like_params)
+    matcher2 = Matcher.find(params[:matcher])
+    @like = Like.new(matcher1: current_matcher, matcher2: matcher2, match: false)
 
     respond_to do |format|
       if @like.save
@@ -62,13 +62,14 @@ class LikesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_like
-      @like = Like.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def like_params
-      params.require(:like).permit(:matcher_1, :matcher_2, :match)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_like
+    @like = Like.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def like_params
+    params.require(:matcher)
+  end
 end
