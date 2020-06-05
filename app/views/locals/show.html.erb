@@ -22,9 +22,20 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
   <strong>Direccion:</strong>
   <%= @local.direccion %>
 </p>
+
 <p>
   <strong>Descripcion:</strong>
   <%= @local.descripcion %>
+</p>
+
+<p>
+  <strong>Comentarios:</strong>
+  <%= render "comentarios/form" %>
+  <% @local.comentarios.each do |comentario|%>
+  <div>
+    <%= comentario.contenido %> - <%= comentario.matcher.nombre %>  - <%= comentario.created_at %>  - <%= comentario.valoracion %> 
+  </div>
+  <% end %>
 </p>
 
 <p>

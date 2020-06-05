@@ -54,7 +54,7 @@
   <div class="field">
     <%= f.label :comuna %>
     <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
-  </div>\
+  </div>
 
   <div class="field">
     <% @gustos.each do |gusto| %>

@@ -23,12 +23,12 @@ Rails.application.routes.draw do
     passwords: 'matchers/passwords',
     registrations: 'matchers/registrations'
   }
-  resources :comentarios
-  match '/admins', to: 'admins#index', via: 'get'
-  match '/matchers', to: 'matchers#index', via: 'get'
-  get 'matchers/:id', to: 'matchers#show', as: 'matcher'
+
   resources :comunas
-  resources :locals
+
+  resources :locals do
+    resources :comentarios, only: [:create, :update, :destroy]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'hello#index'
 end
