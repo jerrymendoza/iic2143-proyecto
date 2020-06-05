@@ -1,11 +1,11 @@
 class MatchersController < ApplicationController
   before_action :set_matcher, only: [:show]
   def index
-    @matchers = Matcher.all
+    @matchers = Matcher.where.not(id: current_matcher)
   end
 
   def show
-    @gustos = Gusto.all
+
   end
 
   private
