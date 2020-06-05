@@ -45,24 +45,17 @@ class ComentariosController < ApplicationController
 
   private
 
-<<<<<<< HEAD
-  # Use callbacks to share common setup or constraints between actions.
   def set_comentario
     @comentario = Comentario.find(params[:id])
   end
 
+  def set_local
+    @local = Local.find(params[:local_id])
+  end
+
   # Only allow a list of trusted parameters through.
   def comentario_params
-    params.require(:comentario).permit(:matcher, :local, :valoracion, :contenido)
+    params.require(:comentario).permit(:valoracion, :contenido)
   end
-=======
-    def set_local
-      @local = Local.find(params[:local_id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def comentario_params
-      params.require(:comentario).permit(:valoracion, :contenido)
-    end
->>>>>>> form_comentarios
+  
 end
