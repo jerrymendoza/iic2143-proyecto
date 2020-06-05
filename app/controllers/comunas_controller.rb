@@ -1,11 +1,11 @@
 class ComunasController < ApplicationController
   before_action :set_comuna, only: %i[show edit update destroy]
+  before_action :authenticate_admin!, only: %i[new edit create update destroy]
 
   # GET /comunas
   # GET /comunas.json
   def index
     @comunas = Comuna.all
-    @zapatos = [1, 'two', 3.0]
   end
 
   # GET /comunas/1

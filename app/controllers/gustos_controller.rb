@@ -1,4 +1,6 @@
 class GustosController < ApplicationController
+  before_action :authenticate_admin!, only: %i[new edit create update destroy]
+  
   def new
     @gusto = Gusto.new
   end
