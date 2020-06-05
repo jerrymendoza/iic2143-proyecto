@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     passwords: 'matchers/passwords',
     registrations: 'matchers/registrations'
   }
-
+  match '/admins', to: 'admins#index', via: 'get'
+  match '/matchers', to: 'matchers#index', via: 'get'
+  get 'matchers/:id', to: 'matchers#show', as: 'matcher'
   resources :comunas
-
   resources :locals do
     resources :comentarios, only: [:create, :update, :destroy]
   end
