@@ -1,3 +1,3 @@
 class Gusto < ApplicationRecord
-    has_and_belongs_to_many :matchers
+  has_and_belongs_to_many :matchers
 end

@@ -2,7 +2,9 @@ AllCops:
   Includes:
     - config/routes.rb
     - app/models/*
+    - app/controllers/*
   Excludes:
+    
     - db/**
     #- config/**/*
     - script/**

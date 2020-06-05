@@ -1,5 +1,5 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: [:show, :edit, :update, :destroy]
+  before_action :set_comentario, only: %i[show edit update destroy]
 
   # GET /comentarios
   # GET /comentarios.json
@@ -9,8 +9,7 @@ class ComentariosController < ApplicationController
 
   # GET /comentarios/1
   # GET /comentarios/1.json
-  def show
-  end
+  def show; end
 
   # GET /comentarios/new
   def new
@@ -18,8 +17,7 @@ class ComentariosController < ApplicationController
   end
 
   # GET /comentarios/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /comentarios
   # POST /comentarios.json
@@ -62,13 +60,14 @@ class ComentariosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comentario
-      @comentario = Comentario.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comentario_params
-      params.require(:comentario).permit(:matcher, :local, :valoracion, :contenido)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comentario
+    @comentario = Comentario.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comentario_params
+    params.require(:comentario).permit(:matcher, :local, :valoracion, :contenido)
+  end
 end
