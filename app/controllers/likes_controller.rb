@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   # GET /likes
   # GET /likes.json
   def index
-    @likes = Like.all
+    @likes = Like.where(:matcher1 => current_matcher )
   end
 
   # GET /likes/1
@@ -22,7 +22,8 @@ class LikesController < ApplicationController
   # POST /likes
   # POST /likes.json
   def create
-    @like = Like.new(like_params)
+    matcher2 = Matcher.find(params[:matcher])
+    @like = Like.new(:matcher1 => current_matcher ,:matcher2 => matcher2, :match => false)
 
     respond_to do |format|
       if @like.save
@@ -68,6 +69,6 @@ class LikesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def like_params
-    params.require(:like).permit(:matcher_1, :matcher_2, :match)
+    params.require(:matcher)
   end
 end

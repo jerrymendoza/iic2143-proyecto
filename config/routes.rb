@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :likes
+  post 'likes', to: 'likes#create'
   resources :meetings
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
