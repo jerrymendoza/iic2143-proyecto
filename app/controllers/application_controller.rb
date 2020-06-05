@@ -14,17 +14,20 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_propietario_local!
-    redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'  unless admin_signed_in? || propietario_local_signed_in?
+    unless admin_signed_in? || propietario_local_signed_in?
+      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+    end
   end
 
   def authenticate_todos!
-    redirect_to root_path, notice: 'No tienes permisos para realizar esta acción' unless admin_signed_in? || propietario_local_signed_in? || matcher_signed_in?
+    unless admin_signed_in? || propietario_local_signed_in? || matcher_signed_in?
+      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+    end
   end
 
   def authenticate_admin_matcher!
-    redirect_to root_path, notice: 'No tienes permisos para realizar esta acción' unless admin_signed_in? || matcher_signed_in?
+    unless admin_signed_in? || matcher_signed_in?
+      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+    end
   end
-
-    
-      
 end

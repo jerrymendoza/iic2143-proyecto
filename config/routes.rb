@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'
   resources :comunas
   resources :locals do
-    resources :comentarios, only: [:create, :update, :destroy]
+    resources :comentarios, only: %i[create update destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'hello#index'

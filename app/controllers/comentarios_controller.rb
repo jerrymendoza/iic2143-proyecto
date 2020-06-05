@@ -58,5 +58,4 @@ class ComentariosController < ApplicationController
   def comentario_params
     params.require(:comentario).permit(:valoracion, :contenido)
   end
-  
 end

@@ -1,10 +1,11 @@
 class LikesController < ApplicationController
   before_action :set_like, only: %i[show edit update destroy]
+  before_action :authenticate_matcher!, only: %i[new create]
 
   # GET /likes
   # GET /likes.json
   def index
-    @likes = Like.where(:matcher1 => current_matcher )
+    @likes = Like.where(matcher1: current_matcher)
   end
 
   # GET /likes/1
@@ -23,7 +24,7 @@ class LikesController < ApplicationController
   # POST /likes.json
   def create
     matcher2 = Matcher.find(params[:matcher])
-    @like = Like.new(:matcher1 => current_matcher ,:matcher2 => matcher2, :match => false)
+    @like = Like.new(matcher1: current_matcher, matcher2: matcher2, match: false)
 
     respond_to do |format|
       if @like.save

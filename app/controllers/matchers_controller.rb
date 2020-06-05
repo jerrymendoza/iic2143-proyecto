@@ -5,9 +5,7 @@ class MatchersController < ApplicationController
     @matchers = Matcher.where.not(id: current_matcher)
   end
 
-  def show
-
-  end
+  def show; end
 
   private
 

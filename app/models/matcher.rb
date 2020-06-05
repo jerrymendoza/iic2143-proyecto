@@ -1,5 +1,5 @@
 class Matcher < ApplicationRecord
-  #validates :nombre, :edad, :rut, :imagen, :telefono, :comuna, :descripcion, presence: true
+  # validates :nombre, :edad, :rut, :imagen, :telefono, :comuna, :descripcion, presence: true
   has_one_attached :imagen
   belongs_to :comuna, optional: true
   has_many :comentarios
