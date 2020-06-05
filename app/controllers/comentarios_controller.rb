@@ -1,6 +1,7 @@
 class ComentariosController < ApplicationController
   before_action :set_comentario, only: %i[update destroy]
   before_action :set_local
+  before_action :authenticate_matcher!
 
   # POST /comentarios
   # POST /comentarios.json

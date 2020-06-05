@@ -1,5 +1,7 @@
 class LocalsController < ApplicationController
   before_action :set_local, only: %i[show edit update destroy]
+  before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
+  before_action :authenticate_propietario_local!, only: %i[new create]
 
   # GET /locals
   # GET /locals.json
@@ -29,7 +31,7 @@ class LocalsController < ApplicationController
   # POST /locals.json
   def create
     @comunas = Comuna.all
-    @local = Local.new(local_params)
+    @local = current_propietario_local.locals.new(local_params)
     respond_to do |format|
       if @local.save
         format.html { redirect_to @local, notice: 'Local was successfully created.' }
