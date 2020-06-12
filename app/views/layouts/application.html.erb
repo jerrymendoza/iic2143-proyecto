@@ -16,19 +16,31 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
   </head>
 
-  <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-    <%= render "partials/menu" %>
-    <%= yield %>
+<body>
+    
 
 
-    <%= render "partials/menu_login" %>
+  <div class="app" uk-grid>
+
+        <div class="left-side uk-width-1-4">
+                <%= render "partials/menu" %>
+        </div>
+
+        <div class="uk-width-3-4">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+                <%= yield %>
+        </div>
+  </div>
+
+
+
+
+    <%# <%= render "partials/menu_login" %>
   </body>
 </html>
 	
