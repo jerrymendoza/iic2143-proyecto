@@ -29,6 +29,7 @@
 
 ### Sprint 2
 
+
 | Item | Puntaje Máximo | Puntaje obtenido | Explicación |
 
 | ------ | ------ |------|------|
