@@ -1,25 +1,29 @@
 <h1>Matchers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Foto</th>
-      <th>Like</th>
-    </tr>
-  </thead>
+<div class="matching">
 
-  <tbody>
-    <% @matchers.each do |matcher| %>
-      <tr>
-        <td><%= link_to matcher.nombre, matcher_path(matcher.id) %></td>
-        <td>
+  <% @matchers.each_with_index do |matcher, index| %>
+    <div class="uk-card uk-card-large item uk-card-default <%=  'as' if index != 0 %>" >
+    
+        <div class="card-img">
           <% if matcher.imagen.attached? %>
-            <image src="<%=(url_for(matcher.imagen))%>" width = '150px' >
+                <image src="<%=(url_for(matcher.imagen))%>"/>
           <% end %>
-        </td>
-        <td><td><%= button_to 'Like', {:controller => "likes", :action => "create", :matcher => matcher} ,:method=>:post  %></td>
-      </tr>
+        </div>
+
+        <div class="">
+        <h4><%= matcher.nombre %></h4>
+        </div>
+
+      <%= button_to 'Like', {:controller => "likes", 
+      :action => "create", 
+      :matcher => matcher 
+      } ,:method=>:post, 
+      :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom'
+       %>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  
+
+</div>
+
