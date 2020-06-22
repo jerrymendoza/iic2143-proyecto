@@ -33,24 +33,17 @@
                         <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
                             <div>
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-active"><a href="#">Active</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li class="uk-nav-header">Header</li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li><a href="#">Item</a></li>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla odio molestie sollicitudin sollicitudin. Aenean dignissim purus sit amet vulputate scelerisque.</p>
                                 </ul>
                             </div>
                             <div>
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-active"><a href="#">Active</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li class="uk-nav-header">Header</li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">¿Dueño de local?</li>
+                                    <li><%= link_to "Registraté!", new_propietario_local_registration_path, :method => :get %> </li>
+                                    <li><%= link_to "Login", new_propietario_local_session_path, :method => :get %></li>
                                     <li class="uk-nav-divider"></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">¿ Administrador ?</li>
+                                    <li><%= link_to "Login", new_admin_session_path, :method => :get %></li>
                                 </ul>
                             </div>
                         </div>
