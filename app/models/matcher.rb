@@ -12,6 +12,7 @@ class Matcher < ApplicationRecord
          :recoverable, :rememberable, :validatable
   after_create :guardar_gustos
   after_update :guardar_gustos
+  before_destroy :eliminar_relaciones
 
   attr_writer :gustos_ids
 
@@ -26,4 +27,10 @@ class Matcher < ApplicationRecord
     end
   end
 
+  def eliminar_relaciones
+    self.comentarios.destroy_all
+    self.matcher1_likes.destroy_all
+    self.matcher2_likes.destroy_all
+    self.gustos.destroy_all
+  end
 end
