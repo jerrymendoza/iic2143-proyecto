@@ -5,7 +5,6 @@ class LikesController < ApplicationController
   # GET /likes
   # GET /likes.json
   def index
-    @likes = Like.where(matcher1: current_matcher)
   end
 
   # GET /likes/1
