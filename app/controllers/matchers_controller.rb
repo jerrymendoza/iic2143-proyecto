@@ -1,6 +1,7 @@
 class MatchersController < ApplicationController
-  before_action :set_matcher, only: [:show]
-  before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
+  before_action :set_matcher, only: %i[edit show]
+  before_action :authenticate_admin_matcher!, only: %i[edit update destroy]
+
   def index
     @matchers = Matcher.where.not(id: current_matcher)
   end

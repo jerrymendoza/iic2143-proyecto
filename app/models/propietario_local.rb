@@ -4,4 +4,9 @@ class PropietarioLocal < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  before_destroy :eliminar_relaciones
+
+  def eliminar_relaciones
+  	self.locals.destroy_all
+  end
 end

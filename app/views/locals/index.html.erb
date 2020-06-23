@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Dueno</th>
       <th>Comuna</th>
       <th>Direccion</th>
       <th>Descripcion</th>
@@ -19,7 +18,7 @@
     <% @locals.each do |local| %>
       <tr>
         <td><%= local.nombre %></td>
-        <td><%= local.comuna.name %></td>
+        <td><%= local.comuna.name if not local.comuna.nil? %></td>
         <td><%= local.direccion %></td>
         <td><%= local.descripcion %></td>
         <td><%= local.aceptado %></td>

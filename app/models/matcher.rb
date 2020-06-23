@@ -11,14 +11,26 @@ class Matcher < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   after_create :guardar_gustos
+  after_update :guardar_gustos
+  before_destroy :eliminar_relaciones
 
   attr_writer :gustos_ids
 
   private
 
   def guardar_gustos
-    @gustos_ids.each do |gusto_id|
-      GustosMatchers.create(gusto_id: gusto_id, matcher_id: id)
+    if not @gustos_ids.nil?
+      self.gustos.destroy_all
+      @gustos_ids.each do |gusto_id|
+        GustosMatchers.create(gusto_id: gusto_id, matcher_id: id)
+      end
     end
+  end
+
+  def eliminar_relaciones
+    self.comentarios.destroy_all
+    self.matcher1_likes.destroy_all
+    self.matcher2_likes.destroy_all
+    self.gustos.destroy_all
   end
 end
