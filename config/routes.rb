@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   match '/matchers', to: 'matchers#index', via: 'get'
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'
   resources :comunas
+  get 'locals/solicitudes', to: 'locals#index_no_aceptados'
+  get 'locals/mis_locales', to: 'locals#index_locals_de_propietario_local'
+  patch 'locals/solicitudes', to: 'locals#enviar_aceptar_local'
   resources :locals do
     resources :comentarios, only: %i[create update destroy]
   end

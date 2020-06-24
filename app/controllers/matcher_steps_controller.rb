@@ -29,7 +29,7 @@ private
   	@matcher = current_matcher
   end
 
-  def redirect_to_finish_wizard a, b
+  def redirect_to_finish_wizard var_1, var_2 #variables que llegan a la fúncion pero no tienen utilidad
   	redirect_to root_url, notice: "Tu cuenta ha sido creada con éxito"
   end
 end
