@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Likes</h1>
+<h1>Mis Likes</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Matcher 1</th>
-      <th>Matcher 2</th>
+      <th>Matcher</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +13,8 @@
   <tbody>
     <% current_matcher.matcher1_likes.each do |like| %>
       <tr>
-        <td><%= like.matcher1.nombre %></td>
         <td><%= like.matcher2.nombre %></td>
-
-        <td><%= link_to 'Show', like %></td>
-        <td><%= link_to 'Dislike', like, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Dislike', like, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_like, only: %i[show edit update destroy]
-  before_action :authenticate_matcher!, only: %i[new create]
+  before_action :authenticate_matcher!, only: %i[new create index]
 
   # GET /likes
   # GET /likes.json
