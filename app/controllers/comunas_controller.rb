@@ -10,7 +10,11 @@ class ComunasController < ApplicationController
 
   # GET /comunas/1
   # GET /comunas/1.json
-  def show; end
+  def show
+    @locals = Local.all
+
+
+  end
 
   # GET /comunas/new
   def new

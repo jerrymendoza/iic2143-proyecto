@@ -1,9 +1,43 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="uk-heading-medium"><%= @comuna.name %></h1>
+
 <p>
-  <strong>Name:</strong>
-  <%= @comuna.name %>
+  <strong>Locales:</strong>
 </p>
+  <tbody>
+    <% @locals.each do |local| %>
+
+      <% if local.comuna.name == @comuna.name %>
+      <div class="uk-card uk-card-default uk-width-1-2@m">
+          <div class="uk-card-header">
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                  <div class="uk-width-auto">
+                    <% if local.imagen.attached? %>
+                      <img class="uk-border-circle" width="80" height="80" src=<%=(url_for(local.imagen))%>>
+                    <% end %>
+                  </div>
+                  <div class="uk-width-expand">
+                      <h3 class="uk-card-title uk-margin-remove-bottom"><%= local.nombre %></h3>
+                      <p class="uk-text-meta uk-margin-remove-top"><%= local.direccion %></p>
+                  </div>
+              </div>
+          </div>
+          <div class="uk-card-body">
+              <p><%= local.descripcion %></p>
+          </div>
+          <div class="uk-card-footer">
+            <%= link_to 'Detalles', local,
+              :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %>
+          </div>
+      </div>
+      <br>
+
+
+      <% end %>
+
+    <% end %>
+
 
 <%= link_to 'Edit', edit_comuna_path(@comuna) %> |
 <%= link_to 'Back', comunas_path %>
