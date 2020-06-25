@@ -1,5 +1,3 @@
-<p id='notice'><%= notice %></p>
-
 <h1>Nuevo Gusto</h1>
 <%= form_with(model: @gusto, method: :post) do |form| %>
   <div class= 'field'>
@@ -7,6 +5,8 @@
     <%= form.text_field :titulo %>
     <%= form.label :descripcion %>
     <%= form.text_field :descripcion %>
+    <%= form.label :category %>
+    <%= form.collection_select(:category_id, @categories, :id, :nombre, {:prompt => 'Seleccionar Categoría'}) %>
 
     <div class='actions'>
       <%=form.submit %>
