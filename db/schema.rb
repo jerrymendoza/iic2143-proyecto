@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_061953) do
     t.integer "telefono"
     t.integer "edad"
     t.string "descripcion"
+    t.string "genero"
     t.bigint "comuna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

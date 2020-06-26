@@ -4,7 +4,7 @@ class Matchers::RegistrationsController < Devise::RegistrationsController
   #include Accessible
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :set_gustos, only: [:edit, :update]
+  before_action :set_categories, only: [:edit, :update]
   before_action :set_comunas, only: [:edit, :update]
 
   # GET /resource/sign_up
@@ -92,8 +92,8 @@ class Matchers::RegistrationsController < Devise::RegistrationsController
     mensaje.join()
   end
 
-  def set_gustos
-    @gustos = Gusto.all
+  def set_categories
+    @categories = Category.all
   end
 
   def set_comunas
@@ -103,11 +103,11 @@ class Matchers::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nombre, :telefono, :imagen, :edad, :descripcion, :comuna_id, :rut])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nombre, :telefono, :imagen, :edad, :descripcion, :comuna_id, :rut, :genero])
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nombre, :telefono, :imagen, :edad, :descripcion, :comuna_id, :rut])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nombre, :telefono, :imagen, :edad, :descripcion, :comuna_id, :rut, :genero])
   end
 
   # The path used after sign up.

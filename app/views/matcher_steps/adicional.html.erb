@@ -37,6 +37,11 @@
     <%= f.text_area :descripcion %>
   </div>
 
+  <div class="field">
+    <%= f.label :genero %>
+    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}) %>
+  </div>
+
   <ul uk-accordion>
     <% @categories.each do |category| %>
       <li class="uk-open">
