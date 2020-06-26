@@ -13,9 +13,27 @@ class Matchers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      redirect_to new_matcher_registration_path, notice: error_al_registrar(resource)
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -56,6 +74,23 @@ class Matchers::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
+
+  def error_al_registrar resource
+    mensaje = []
+    if resource.email.blank? 
+      mensaje << 'El email no puede estar vacío'
+    elsif Matcher.exists?(email: resource.email)
+      mensaje << 'Este email ya esta registrado'
+    end
+    if params[:matcher][:password].blank?
+      mensaje << 'La contraseña no puede estar vacía'
+    elsif params[:matcher][:password].length < 6
+      mensaje << 'La contraseña no es válida'
+    elsif params[:matcher][:password_confirmation] != params[:matcher][:password]
+      mensaje << 'Las contraseñas no coiciden'
+    end
+    mensaje.join()
+  end
 
   def set_gustos
     @gustos = Gusto.all
