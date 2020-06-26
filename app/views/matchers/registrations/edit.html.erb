@@ -56,19 +56,33 @@
     <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
   </div>
 
-  <div class="field">
-    <% @gustos.each do |gusto| %>
-    <div>
-      <%= check_box_tag "gustos_ids[]", gusto.id, @matcher.gustos.include?(gusto)%>
-      <%= gusto.titulo %>
-    </div>
+  <ul uk-accordion>
+    <% @categories.each do |category| %>
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#"><%= category.nombre %></a>
+        <div class="uk-accordion-content">
+        <% category.gustos.each do |gusto| %>
+          <div>
+            <% tiene_gusto = resource.gustos.include? gusto %>
+            <%= check_box_tag "gustos_ids[]", gusto.id, checked = tiene_gusto %>
+            <%= gusto.titulo %>
+          </div>
+        <% end %>
+        </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
 
   <div class="field">
     <%= f.label :descripcion %>
     <%= f.text_area :descripcion %>
   </div>
+
+  <div class="field">
+    <%= f.label :genero %>
+    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}) %>
+  </div>
+
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

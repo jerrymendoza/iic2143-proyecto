@@ -1,6 +1,6 @@
 <h2>Agrega tus datos!</h2>
 
-<%= form_for @matcher, url: wizard_path do |f| %>
+<%= form_for @matcher, url: wizard_path, method: :put do |f| %>
 
 	<div class="field">
     <%= f.label :nombre %>
@@ -38,14 +38,25 @@
   </div>
 
   <div class="field">
-     <%= f.label "Gustos" %>
-    <% @gustos.each do |gusto| %>
-    <div>
-      <%= check_box_tag "gustos_ids[]", gusto.id %>
-      <%= gusto.titulo %>
-    </div>
-    <% end %>
+    <%= f.label :genero %>
+    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}) %>
   </div>
+
+  <ul uk-accordion>
+    <% @categories.each do |category| %>
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#"><%= category.nombre %></a>
+        <div class="uk-accordion-content">
+        <% category.gustos.each do |gusto| %>
+          <div>
+            <%= check_box_tag "gustos_ids[]", gusto.id %>
+            <%= gusto.titulo %>
+          </div>
+        <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
