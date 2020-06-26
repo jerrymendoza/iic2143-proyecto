@@ -1,29 +1,49 @@
 <h1>Matchers</h1>
 
-<div class="matching">
-
-  <% @matchers.each_with_index do |matcher, index| %>
-    <div class="uk-card uk-card-large item uk-card-default <%=  'as' if index != 0 %>" >
-    
-        <div class="card-img">
-          <% if matcher.imagen.attached? %>
-                <image src="<%=(url_for(matcher.imagen))%>"/>
-          <% end %>
-        </div>
-
-        <div class="">
-        <h4><%= matcher.nombre %></h4>
-        </div>
-
-      <%= button_to 'Like', {:controller => "likes", 
-      :action => "create", 
-      :matcher => matcher 
-      } ,:method=>:post, 
-      :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom'
-       %>
+<div uk-filter="target: .js-filter">
+  <div class="uk-grid-small uk-grid-divider uk-child-width-auto" uk-grid>
+    <div>
+      <ul class="uk-subnav uk-subnav-pill" uk-margin>
+        <li class="uk-active" uk-filter-control><a href="#">All</a></li>
+      </ul>
     </div>
+    <div align="center">
+      Género
+      <ul class="uk-subnav uk-subnav-pill" uk-margin>
+        <li uk-filter-control="filter: [genero='Hombre']; group: genero"><a href="#">Hombres</a></li>
+        <li uk-filter-control="filter: [genero='Mujer']; group: genero"><a href="#">Mujeres</a></li>
+      </ul>
+    </div>
+    <% @categories.each do |category| %>
+      <div align="center">
+        <%= category.nombre %>
+        <ul class="uk-subnav uk-subnav-pill" uk-margin>
+          <% category.gustos.each do |gusto| %>
+            <li uk-filter-control="filter: [<%= gusto.titulo %> = true]; group: <%= gusto.titulo %>"><a href="#"><%= gusto.titulo %> </a></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  
+  </div>
 
+  <div class="js-filter matching" >
+    <% @matchers.each_with_index do |matcher, index| %>
+      <div class="uk-card uk-card-large item uk-card-default <%=  'as' if index != 0 %>" genero="<%= matcher.genero %>" 
+        <% @gustos.each do |gusto| %>
+          <%= gusto.titulo %> = "<%= matcher.gustos.include? gusto %>"
+        <% end %> >
+
+        <div class="card-img" >
+          <% if matcher.imagen.attached? %>
+            <image src="<%=(url_for(matcher.imagen))%>"/>
+          <% else%>
+            <image src="assets/default-matcher-image.png" alt=""> 
+          <% end %>
+          <h4><%= link_to matcher.nombre, matcher_path(matcher) %></h4>
+          <%= button_to 'Like', {:controller => "likes", :action => "create", :matcher => matcher } ,:method=>:post, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 

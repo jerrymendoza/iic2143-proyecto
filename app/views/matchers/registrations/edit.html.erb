@@ -63,7 +63,8 @@
         <div class="uk-accordion-content">
         <% category.gustos.each do |gusto| %>
           <div>
-            <%= check_box_tag "gustos_ids[]", gusto.id %>
+            <% tiene_gusto = resource.gustos.include? gusto %>
+            <%= check_box_tag "gustos_ids[]", gusto.id, checked = tiene_gusto %>
             <%= gusto.titulo %>
           </div>
         <% end %>

@@ -1,9 +1,11 @@
 class MatchersController < ApplicationController
   before_action :set_matcher, only: %i[edit show]
   before_action :authenticate_admin_matcher!, only: %i[edit update destroy]
+  before_action :set_categories, only: %[index]
 
   def index
     @matchers = Matcher.where.not(id: current_matcher)
+    @gustos = Gusto.all
   end
 
   def show; end
@@ -12,5 +14,9 @@ class MatchersController < ApplicationController
 
   def set_matcher
     @matcher = Matcher.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end
