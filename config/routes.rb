@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get 'locals/mis_locales', to: 'locals#index_locals_de_propietario_local'
   patch 'locals/solicitudes', to: 'locals#enviar_aceptar_local'
   resources :locals do
-    resources :comentarios, only: %i[create update destroy]
+    resources :comentarios, only: %i[create edit show update destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'hello#index'

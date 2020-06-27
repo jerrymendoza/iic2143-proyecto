@@ -1,4 +1,4 @@
-class LocalsController < ApplicationController
+ class LocalsController < ApplicationController
   before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local]
   before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
   before_action :authenticate_propietario_local!, only: %i[new create index_locals_de_propietario_local]

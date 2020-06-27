@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Descripcion</th>
+      <th>Categoría</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
     <% @gusto.each do |gusto| %>
       <tr>
         <td><%= gusto.titulo %></td>
-        <td><%= gusto.descripcion %></td>
+        <td><%= gusto.category %></td>
         <td><%= link_to 'Ver detalles', gusto_path(gusto.id)%></td>
       </tr>
     <%end%>

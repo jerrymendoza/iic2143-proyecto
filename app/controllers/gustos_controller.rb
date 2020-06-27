@@ -1,5 +1,5 @@
 class GustosController < ApplicationController
-  before_action :authenticate_admin!, only: %i[new edit create update destroy]
+  before_action :authenticate_admin!, only: %i[new edit index create update destroy]
   before_action :set_categories, onle: %i[create new edit]
 
   def new
@@ -11,7 +11,7 @@ class GustosController < ApplicationController
   end
 
   def create
-    gusto_params = params.require(:gusto).permit(:titulo, :descripcion, :category_id)
+    gusto_params = params.require(:gusto).permit(:titulo, :category_id)
     @gusto = Gusto.create(gusto_params)
 
     if @gusto.save
@@ -30,7 +30,7 @@ class GustosController < ApplicationController
   end
 
   def update
-    gusto_params = params.require(:gusto).permit(:titulo, :descripcion, :category_id)
+    gusto_params = params.require(:gusto).permit(:titulo, :category_id)
     @gusto = Gusto.find(params[:id])
     if @gusto.update(gusto_params)
       redirect_to gustos_path(@gusto.id), notice: 'Gusto editado exitosamente'

@@ -17,8 +17,8 @@
 
 <p>
   <strong>Contenido:</strong>
-  <%= @comentario.contenido %>
+  <%=  %>
 </p>
 
-<%= link_to 'Edit', edit_comentario_path(@comentario) %> |
-<%= link_to 'Back', comentarios_path %>
+<%= link_to 'Edit', edit_local_comentario_path(@local, @comentario) %> |
+<%= link_to 'Back', locals_path(@local) %>

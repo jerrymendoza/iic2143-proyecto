@@ -1,5 +1,5 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: %i[update destroy]
+  before_action :set_comentario, only: %i[edit show update destroy]
   before_action :set_local
   before_action :authenticate_matcher!
 
@@ -11,7 +11,7 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @local, notice: 'Comentario was successfully created.' }
+        format.html { redirect_to @local, notice: 'Comentario creado.' }
         format.json { render :show, status: :created, location: @local }
       else
         format.html { render :new }
@@ -25,7 +25,7 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to @local, notice: 'Comentario was successfully updated.' }
+        format.html { redirect_to @local, notice: 'Comentario fue editado.' }
         format.json { render :show, status: :ok, location: @local }
       else
         format.html { render :edit }
@@ -39,7 +39,7 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to @local, notice: 'Comentario was successfully destroyed.' }
+      format.html { redirect_to @local, notice: 'Tu comentario fue desrtuido.' }
       format.json { head :no_content }
     end
   end
