@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   match '/admins', to: 'admins#index', via: 'get'
   match '/matchers', to: 'matchers#index', via: 'get'
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'
+  get 'matchs/:id', to: 'matches#show', as: 'matches'
   resources :comunas
   get 'locals/solicitudes', to: 'locals#index_no_aceptados'
   get 'locals/mis_locales', to: 'locals#index_locals_de_propietario_local'
