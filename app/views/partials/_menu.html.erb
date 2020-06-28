@@ -13,19 +13,33 @@
       <li><span uk-icon="icon: home"></span>&nbsp;&nbsp;<%= link_to 'Home', root_path, :class => 'uk-button uk-button-text'%></li>
       <li><span uk-icon="icon: location"></span>&nbsp;&nbsp;<%= link_to 'Locales', locals_path, :class => 'uk-button uk-button-text' %></li>
       <% if admin_signed_in? %>
-        <li><span uk-icon="icon: question">&nbsp;&nbsp;</span><%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %></li>
       <% elsif propietario_local_signed_in? %>
           <li><span uk-icon="icon: cart"></span>&nbsp;&nbsp;<%= link_to 'Mis Locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %></li>
       <% end %>
       <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
       <li><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= link_to 'Likes', likes_path, :class => 'uk-button uk-button-text' %></li>
       <li><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;<%= link_to 'Meetings', meetings_path, :class => 'uk-button uk-button-text' %></li>
+      <% if matcher_signed_in? %>
+        <div class="uk-position-small uk-position-bottom">
+         <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Mi Perfil', matcher_path(id: current_matcher), :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
+         |&nbsp;&nbsp;<span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_matcher_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+        </div>
+      <% elsif propietario_local_signed_in?%>
       <div class="uk-position-small uk-position-bottom">
-       <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Mi Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
-       |&nbsp;&nbsp;<span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_matcher_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+       <span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_propietario_local_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
       </div>
+      <% elsif admin_signed_in?%>
+      <div class="uk-position-small uk-position-bottom">
+       <span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+      </div>
+      <% end %>
     </ul>
 
 </ul>
+<% else %>
+  <div class="uk-position-small uk-position-bottom">
+   <span uk-icon="icon: home"></span>&nbsp;&nbsp;<%= link_to "Inicio", :class => 'uk-button uk-button-text'  %>
+  </div>
 
 <% end %>

@@ -3,6 +3,8 @@
 <p>
   <% if @matcher.imagen.attached? %>
     <image src="<%=(url_for(@matcher.imagen))%>" width = '350px' >
+  <% else %>
+    <image src="assets/default-matcher-image.png" alt="">
   <% end %>
 </p>
 
