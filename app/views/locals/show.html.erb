@@ -37,9 +37,9 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
     <%= render "comentarios/form" %>
     <% @local.comentarios.each do |comentario|%>
       <div>
-        <%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario), :place_holder => "Editar" %> - 
+        <%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario), :place_holder => "Editar" %> -
         <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %> -
-        <%= comentario.matcher.nombre %>  - <%= comentario.created_at %> 
+        <%= comentario.matcher.nombre %>  - <%= comentario.created_at %>
 
         <% if comentario.matcher == current_matcher %>
           - <%= link_to 'Eliminar', {:controller => "comentarios", :action => "destroy", :id => comentario.id, :local_id => @local.id} ,:method=>:delete, remote: :true%>
@@ -59,12 +59,12 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
 <% end %>
 <%  if propietario_local_signed_in? %>
   <%= link_to 'Mis locales', locals_mis_locales_path %> |
-  <%= link_to 'Locales', locals_mis_locales_path %> 
+  <%= link_to 'Locales', locals_mis_locales_path %>
 <% end %>
 <%  if admin_signed_in? %>
   <%= link_to 'Solicitudes', locals_solicitudes_path %> |
-  <%= link_to 'Locales', locals_path %> 
+  <%= link_to 'Locales', locals_path %>
 <% end %>
 <%  if matcher_signed_in? %>
-  <%= link_to 'Volver', locals_path %> 
+  <%= link_to 'Volver', locals_path %>
 <% end %>
