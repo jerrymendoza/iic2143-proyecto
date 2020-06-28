@@ -5,6 +5,7 @@ class MatchersController < ApplicationController
 
   def index
     @matchers = Matcher.where.not(id: current_matcher)
+    @matchers = Matcher.where()
     @gustos = Gusto.all
   end
 
