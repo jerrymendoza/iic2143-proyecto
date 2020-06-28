@@ -1,9 +1,12 @@
 <p>
   <strong>Matcher1:</strong>
-  <%= @match.matcher1 %>
+  <%= @match.matcher1.nombre %>
 </p>
 
 <p>
   <strong>Matcher2:</strong>
-  <%= @match.matcher2 %>
+  <%= @match.matcher2.nombre %>
 </p>
+
+<%= render "meetings/form",
+           :meeting => @meeting %>

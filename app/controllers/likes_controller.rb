@@ -38,7 +38,7 @@ class LikesController < ApplicationController
             redirect_to matches_path(@match.id)
             return
           else
-            puts "algo paso con este match"
+            puts "Uff"
           end
           #redirect_to url_for(:controller => :meetings, :action => :new) 
           return
