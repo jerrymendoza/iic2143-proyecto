@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <!--
 https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042-->
 <p>
@@ -38,9 +36,15 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
     <strong>Comentarios:</strong>
     <%= render "comentarios/form" %>
     <% @local.comentarios.each do |comentario|%>
-    <div>
-      <%= comentario.contenido %> - <%= comentario.matcher.nombre %>  - <%= comentario.created_at %>  - <%= comentario.valoracion %> 
-    </div>
+      <div>
+        <%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario), :place_holder => "Editar" %> - 
+        <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %> -
+        <%= comentario.matcher.nombre %>  - <%= comentario.created_at %> 
+
+        <% if comentario.matcher == current_matcher %>
+          - <%= link_to 'Eliminar', {:controller => "comentarios", :action => "destroy", :id => comentario.id, :local_id => @local.id} ,:method=>:delete, remote: :true%>
+        <% end %>
+      </div>
     <% end %>
   </p>
 <% end %>
@@ -50,5 +54,17 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
   <%= @local.aceptado %>
 </p>
 
-<%= link_to 'Edit', edit_local_path(@local) %> |
-<%= link_to 'Back', :back %>
+<%  if @local.propietario_local == current_propietario_local %>
+  <%= link_to 'Editar', edit_local_path(@local) %> |
+<% end %>
+<%  if propietario_local_signed_in? %>
+  <%= link_to 'Mis locales', locals_mis_locales_path %> |
+  <%= link_to 'Locales', locals_mis_locales_path %> 
+<% end %>
+<%  if admin_signed_in? %>
+  <%= link_to 'Solicitudes', locals_solicitudes_path %> |
+  <%= link_to 'Locales', locals_path %> 
+<% end %>
+<%  if matcher_signed_in? %>
+  <%= link_to 'Volver', locals_path %> 
+<% end %>

@@ -3,8 +3,6 @@
   <div class= 'field'>
     <%= form.label :titulo %>
     <%= form.text_field :titulo %>
-    <%= form.label :descripcion %>
-    <%= form.text_field :descripcion %>
     <%= form.label :category %>
     <%= form.collection_select(:category_id, @categories, :id, :nombre, {:prompt => 'Seleccionar Categoría'}) %>
 

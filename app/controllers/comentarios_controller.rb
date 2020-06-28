@@ -1,7 +1,10 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: %i[update destroy]
+  before_action :set_comentario, only: %i[edit show update destroy verificar_matcher]
   before_action :set_local
   before_action :authenticate_matcher!
+  before_action only: %i[edit update destroy] do
+    verificar_matcher(@comentario)
+  end
 
   # POST /comentarios
   # POST /comentarios.json
@@ -11,7 +14,7 @@ class ComentariosController < ApplicationController
 
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to @local, notice: 'Comentario was successfully created.' }
+        format.html { redirect_to @local, notice: 'Comentario creado.' }
         format.json { render :show, status: :created, location: @local }
       else
         format.html { render :new }
@@ -25,11 +28,11 @@ class ComentariosController < ApplicationController
   def update
     respond_to do |format|
       if @comentario.update(comentario_params)
-        format.html { redirect_to @local, notice: 'Comentario was successfully updated.' }
-        format.json { render :show, status: :ok, location: @local }
+        format.html { redirect_to @local, notice: 'Comentario fue editado.' }
+        format.json { respond_with_bip(@comentario) } 
       else
         format.html { render :edit }
-        format.json { render json: @comentario.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@comentario) } 
       end
     end
   end
@@ -39,7 +42,7 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to @local, notice: 'Comentario was successfully destroyed.' }
+      format.html { redirect_to @local, notice: 'Tu comentario fue desrtuido.' }
       format.json { head :no_content }
     end
   end

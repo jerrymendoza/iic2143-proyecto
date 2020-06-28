@@ -1,6 +1,7 @@
-class LocalsController < ApplicationController
-  before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local]
+ class LocalsController < ApplicationController
+  before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local verificar_propietario_local]
   before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
+  before_action :verificar_propietario_local, only: %i[edit update destroy]
   before_action :authenticate_propietario_local!, only: %i[new create index_locals_de_propietario_local]
   before_action :set_comunas, only: %i[new create edit]
   before_action :authenticate_admin!, only: %i[index_no_aceptados enviar_aceptar_local]
@@ -22,7 +23,7 @@ class LocalsController < ApplicationController
 
   # GET /locals/1
   # GET /locals/1.json
-  def show
+  def show    
     @comentario = Comentario.new
   end
 
@@ -80,6 +81,12 @@ class LocalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to locals_solicitudes_path, notice: 'Se ha aceptado el local.' }
       format.json { head :no_content }
+    end
+  end
+
+  def verificar_propietario_local
+    unless current_propietario_local == @local.propietario_local || admin_signed_in?
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
 
