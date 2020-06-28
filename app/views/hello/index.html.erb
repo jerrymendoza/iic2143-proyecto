@@ -2,8 +2,25 @@
 <% if matcher_signed_in? %>
   <% if current_matcher %>
     <h4>Hola Matcher! </h4>
-    <%= link_to 'Edit profile', edit_matcher_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_matcher_session_path, method: :delete, :class => 'navbar-link'  %>
+    <div class="uk-position-relative uk-visible-toggle uk-light uk-width-3-5" tabindex="-1" uk-slideshow >
+
+    <ul class="uk-slideshow-items">
+        <li>
+            <img data-src="assets/imagen-transicion.jpg" width="" height="" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
+        </li>
+        <li>
+            <img data-src="assets/imagen-transicion-1.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !* +*">
+        </li>
+        <li>
+            <img data-src="assets/imagen-transicion-2.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
+        </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+  </div>
+
   <% end %>
 <% end %>
 
