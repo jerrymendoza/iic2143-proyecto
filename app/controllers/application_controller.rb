@@ -7,25 +7,25 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin_propietario_local!
     unless admin_signed_in? || propietario_local_signed_in?
-      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
 
   def authenticate_todos!
     unless admin_signed_in? || propietario_local_signed_in? || matcher_signed_in?
-      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
 
   def authenticate_admin_matcher!
     unless admin_signed_in? || matcher_signed_in?
-      redirect_to root_path, notice: 'No tienes permisos para realizar esta acción'
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
 
-  def matcher_sadas
-  end
-
-  def propietario_loca
+  def verificar_matcher objeto
+    unless current_matcher == objeto.matcher
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
+    end
   end
 end

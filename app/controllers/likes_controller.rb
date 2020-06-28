@@ -1,6 +1,9 @@
 class LikesController < ApplicationController
-  before_action :set_like, only: %i[show edit update destroy]
+  before_action :set_like, only: %i[show edit update destroy verificar_matcher]
   before_action :authenticate_matcher!, only: %i[new create index destroy]
+  before_action only: %i[edit destroy] do
+    verificar_matcher(@like)
+  end
 
   # GET /likes
   # GET /likes.json
@@ -57,6 +60,12 @@ class LikesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to likes_url, notice: 'Like was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def verificar_matcher like
+    unless current_matcher == like.matcher_1
+      redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
 

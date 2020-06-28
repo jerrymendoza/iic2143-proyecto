@@ -1,7 +1,10 @@
 class ComentariosController < ApplicationController
-  before_action :set_comentario, only: %i[edit show update destroy]
+  before_action :set_comentario, only: %i[edit show update destroy verificar_matcher]
   before_action :set_local
   before_action :authenticate_matcher!
+  before_action only: %i[edit update destroy] do
+    verificar_matcher(@comentario)
+  end
 
   # POST /comentarios
   # POST /comentarios.json
@@ -26,10 +29,10 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.update(comentario_params)
         format.html { redirect_to @local, notice: 'Comentario fue editado.' }
-        format.json { render :show, status: :ok, location: @local }
+        format.json { respond_with_bip(@comentario) } 
       else
         format.html { render :edit }
-        format.json { render json: @comentario.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@comentario) } 
       end
     end
   end

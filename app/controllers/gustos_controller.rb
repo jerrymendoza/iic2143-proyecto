@@ -1,5 +1,5 @@
 class GustosController < ApplicationController
-  before_action :authenticate_admin!, only: %i[new edit index create update destroy]
+  before_action :authenticate_admin!
   before_action :set_categories, onle: %i[create new edit]
 
   def new
