@@ -33,9 +33,10 @@ class LikesController < ApplicationController
         
         if find1 && find2
           puts "**** MATCH! ****"
-          @match = Match.new(matcher1: current_matcher, matcher1: matcher2)
+          @match = Match.new(matcher1: current_matcher, matcher2: matcher2)
           if @match.save
-            redirect_to @match
+            redirect_to matches_path(@match.id)
+            return
           else
             puts "algo paso con este match"
           end
