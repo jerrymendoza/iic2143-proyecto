@@ -4,7 +4,7 @@
     <title>Grupo54Proyecto</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -34,13 +34,13 @@
                         <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
                             <div>
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla odio molestie sollicitudin sollicitudin. Aenean dignissim purus sit amet vulputate scelerisque.</p>
+                                    <p>Bienvenido a DCCitas, donde puedes encontrar una nueva pareja, si ese no es tu interés, puedes registrarte como propetario de un local y publicar tu negocio.</p>
                                 </ul>
                             </div>
                             <div>
                                 <ul class="uk-nav uk-navbar-dropdown-nav">
                                     <li class="uk-nav-header">¿Dueño de local?</li>
-                                    <li><%= link_to "Registraté!", new_propietario_local_registration_path, :method => :get %> </li>
+                                    <li><%= link_to "Registrate!", new_propietario_local_registration_path, :method => :get %> </li>
                                     <li><%= link_to "Login", new_propietario_local_session_path, :method => :get %></li>
                                     <li class="uk-nav-divider"></li>
                                     <li class="uk-nav-header">¿ Administrador ?</li>

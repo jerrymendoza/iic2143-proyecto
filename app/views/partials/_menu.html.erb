@@ -27,10 +27,12 @@
         </div>
       <% elsif propietario_local_signed_in?%>
       <div class="uk-position-small uk-position-bottom">
-       <span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_propietario_local_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+        <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_propietario_local_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
+       <span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_propietario_local_session_path, method: :delete, :class => 'uk-button uk-button-text'  %>
       </div>
       <% elsif admin_signed_in?%>
       <div class="uk-position-small uk-position-bottom">
+        <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_admin_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
        <span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_admin_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
       </div>
       <% end %>
