@@ -14,6 +14,7 @@
       <li><span uk-icon="icon: location"></span>&nbsp;&nbsp;<%= link_to 'Locales', locals_path, :class => 'uk-button uk-button-text' %></li>
       <% if admin_signed_in? %>
         <li><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: location"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
       <% elsif propietario_local_signed_in? %>
           <li><span uk-icon="icon: cart"></span>&nbsp;&nbsp;<%= link_to 'Mis Locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %></li>
       <% end %>
