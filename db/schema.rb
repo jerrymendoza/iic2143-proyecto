@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_061953) do
+ActiveRecord::Schema.define(version: 2020_06_29_004411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(version: 2020_06_25_061953) do
   create_table "likes", force: :cascade do |t|
     t.bigint "matcher1_id"
     t.bigint "matcher2_id"
-    t.boolean "match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["matcher1_id"], name: "index_likes_on_matcher1_id"
@@ -129,20 +128,31 @@ ActiveRecord::Schema.define(version: 2020_06_25_061953) do
     t.bigint "comuna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "access_token"
+    t.string "refresh_token"
     t.index ["comuna_id"], name: "index_matchers_on_comuna_id"
     t.index ["email"], name: "index_matchers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_matchers_on_reset_password_token", unique: true
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "matcher1_id"
+    t.bigint "matcher2_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["matcher1_id"], name: "index_matches_on_matcher1_id"
+    t.index ["matcher2_id"], name: "index_matches_on_matcher2_id"
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.bigint "local_id"
-    t.bigint "like_id"
+    t.bigint "match_id"
     t.date "fecha"
     t.time "hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["like_id"], name: "index_meetings_on_like_id"
     t.index ["local_id"], name: "index_meetings_on_local_id"
+    t.index ["match_id"], name: "index_meetings_on_match_id"
   end
 
   create_table "propietario_locals", force: :cascade do |t|
@@ -159,9 +169,23 @@ ActiveRecord::Schema.define(version: 2020_06_25_061953) do
     t.index ["reset_password_token"], name: "index_propietario_locals_on_reset_password_token", unique: true
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
+    t.string "uri"
+    t.bigint "matcher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.string "preview"
+    t.index ["matcher_id"], name: "index_songs_on_matcher_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "gustos_matchers", "gustos"
   add_foreign_key "gustos_matchers", "matchers"
   add_foreign_key "likes", "matchers", column: "matcher1_id"
   add_foreign_key "likes", "matchers", column: "matcher2_id"
+  add_foreign_key "matches", "matchers", column: "matcher1_id"
+  add_foreign_key "matches", "matchers", column: "matcher2_id"
+  add_foreign_key "songs", "matchers"
 end
