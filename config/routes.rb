@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   match '/matchers', to: 'matchers#index', via: 'get'
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'
   get 'matchs/:id', to: 'matches#show', as: 'matches'
-  get 'matchers/:id/spotify_request', to: 'matchers#spotify_request', as: 'spotify_request'
+  get '/spotify_request', to: 'matchers#spotify_request', as: 'spotify_request'
   get '/spotify_callback', to: 'matchers#spotify_callback', as: 'spotify_callback'
   resources :comunas
   get 'locals/solicitudes', to: 'locals#index_no_aceptados'
