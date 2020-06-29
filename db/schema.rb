@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_015645) do
 
   create_table "gustos", force: :cascade do |t|
     t.string "titulo"
-    t.text "descripcion"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -143,6 +142,8 @@ ActiveRecord::Schema.define(version: 2020_06_28_015645) do
   end
 
   create_table "meetings", force: :cascade do |t|
+    t.boolean "aceptado_1"
+    t.boolean "aceptado_2"
     t.bigint "local_id"
     t.bigint "match_id"
     t.date "fecha"

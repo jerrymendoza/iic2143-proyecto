@@ -1,0 +1,28 @@
+<h1>Mis matches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Match con</th>
+      <th>Estado de cita</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= if match.matcher1 != current_matcher then match.matcher1.nombre else match.matcher1.nombre end %></td>
+        <% if not match.meeting %>
+          <td><%= link_to 'Crear cita', match_path(match.id)%></td>
+        <% elsif match.meeting.aceptado_1 && match.meeting.aceptado_2 %>
+          <td><%= 'Acordada' %></td>
+        <% elsif match.meeting.aceptado_1 || match.meeting.aceptado_2 %>
+          <td><%= 'Esperando confirmación' %></td>
+        <% end %>        
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<br>

@@ -7,3 +7,13 @@
   <strong>Matcher2:</strong>
   <%= @match.matcher2.nombre %>
 </p>
+
+<p>
+	<% if @match.meeting %>
+		<%= @meeting.local.nombre %>
+	<% else %>
+	  <strong>¿Quieres crear una cita?</strong>
+	  	<%= render "meetings/form" %>
+	<% end %>
+</p>
+	

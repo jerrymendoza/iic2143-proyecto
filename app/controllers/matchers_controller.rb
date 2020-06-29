@@ -7,9 +7,13 @@ class MatchersController < ApplicationController
   before_action :set_categories, only: %[index]
 
   def index
-    @matchers = Matcher.where('id NOT IN (?) AND id != (?)', 
+    if matcher_signed_in?
+      @matchers = Matcher.where('id NOT IN (?) AND id != (?)', 
                               Like.select(:matcher2_id).where(matcher1: current_matcher), 
                               current_matcher.id)
+    else
+      @matchers = Matcher.all
+    end
 
     @gustos = Gusto.all
   end
