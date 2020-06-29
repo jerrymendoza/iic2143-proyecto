@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Meetings</h1>
+<h1>Mis citas</h1>
 
 <table>
   <thead>
@@ -8,7 +7,7 @@
       <th>Local</th>
       <th>Like</th>
       <th>Fecha</th>
-      <th>Hora</th>
+      <th>Estado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,18 +15,21 @@
   <tbody>
     <% @meetings.each do |meeting| %>
       <tr>
-        <td><%= meeting.local %></td>
-        <td><%= meeting.like %></td>
+        <td><%= if meeting.local then meeting.local.nombre end %></td>
         <td><%= meeting.fecha %></td>
         <td><%= meeting.hora %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if (not(meeting.aceptado_1) && meeting.match.matcher1 == current_matcher) || (not(meeting.aceptado_2) && meeting.match.matcher2 == current_matcher) %>
+          <td><%= button_to 'Aceptar', {:controller => "meetings", :action => "enviar_aceptar_por_matcher", :id => meeting.id}, :method => :patch, remote: true, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %></td>
+        <% elsif meeting.aceptado_1 && meeting.aceptado_2 %>
+          <td>Confirmada</td>
+        <% else %>
+          <td> Esperando </td>
+        <% end %>
+        <td><%= link_to 'Mostrar', meeting %></td>
+        <td><%= link_to 'Editar', edit_meeting_path(meeting) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Meeting', new_meeting_path %>

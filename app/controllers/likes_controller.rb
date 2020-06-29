@@ -71,7 +71,7 @@ class LikesController < ApplicationController
   end
 
   def verificar_matcher like
-    unless current_matcher == like.matcher_1
+    unless current_matcher == like.matcher1
       redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
