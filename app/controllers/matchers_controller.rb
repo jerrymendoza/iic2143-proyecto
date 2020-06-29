@@ -32,7 +32,7 @@ class MatchersController < ApplicationController
     query_params = {
       client_id: Rails.application.credentials.spotify[:client_id],
       response_type: "code",
-      redirect_uri: "http://localhost:3000/spotify_callback",
+      redirect_uri: spotify_callback_path,
       scope: "user-library-read user-library-modify user-top-read user-modify-playback-state playlist-modify-public playlist-modify-private ugc-image-upload user-read-recently-played",
       show_dialog: true
     }
@@ -46,7 +46,7 @@ class MatchersController < ApplicationController
     body = {
       grant_type: "authorization_code",
       code: params[:code],
-      redirect_uri: "http://localhost:3000/spotify_callback",
+      redirect_uri: spotify_request_path,
       client_id: Rails.application.credentials.spotify[:client_id],
       client_secret: Rails.application.credentials.spotify[:client_secret]
     }
