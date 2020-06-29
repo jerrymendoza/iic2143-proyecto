@@ -2,9 +2,9 @@
 
 <p>
   <% if @matcher.imagen.attached? %>
-    <image src="<%=(url_for(@matcher.imagen))%>" width = '350px' >
+    <image src="<%=(url_for(@matcher.imagen))%>" width = '150px' >
   <% else %>
-    <image src="assets/default-matcher-image.png" alt="">
+    <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" width = '150px'>
   <% end %>
 </p>
 
@@ -44,7 +44,10 @@
   <strong>Comuna:</strong>
   <%= @matcher.comuna.name if not @matcher.comuna.nil?  %>
 </p>
-
+<li><span uk-icon="icon: cog"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
+<% if @matcher == current_matcher %>
+  |&nbsp;&nbsp;<span class="uk-icon uk-icon-image" style="background-image:  url(<%= asset_path 'spotify.png' %>);"></span>&nbsp;&nbsp;<%= link_to 'Conectar con Spotify', spotify_request_path, :class => 'uk-button uk-button-text' %>
+<% end %>
 
 <% if @matcher.songs %>
   <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
@@ -55,7 +58,7 @@
             <img src="<%= song.image %>" alt="<%= song.name %>">
             <div class="uk-position-center uk-panel"><p class="name-song"><%= song.name %></p></div>
         </li>
-    <% end %>
+<% end %>
     </ul>
 
     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
@@ -63,7 +66,5 @@
 
 </div>
 <% else %>
-<%= link_to 'spotify', spotify_request_path %>
+
 <% end %>
-
-

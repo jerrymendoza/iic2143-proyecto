@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_004411) do
   create_table "likes", force: :cascade do |t|
     t.bigint "matcher1_id"
     t.bigint "matcher2_id"
+    t.boolean "match"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["matcher1_id"], name: "index_likes_on_matcher1_id"
@@ -135,24 +136,15 @@ ActiveRecord::Schema.define(version: 2020_06_29_004411) do
     t.index ["reset_password_token"], name: "index_matchers_on_reset_password_token", unique: true
   end
 
-  create_table "matches", force: :cascade do |t|
-    t.bigint "matcher1_id"
-    t.bigint "matcher2_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["matcher1_id"], name: "index_matches_on_matcher1_id"
-    t.index ["matcher2_id"], name: "index_matches_on_matcher2_id"
-  end
-
   create_table "meetings", force: :cascade do |t|
     t.bigint "local_id"
-    t.bigint "match_id"
+    t.bigint "like_id"
     t.date "fecha"
     t.time "hora"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["like_id"], name: "index_meetings_on_like_id"
     t.index ["local_id"], name: "index_meetings_on_local_id"
-    t.index ["match_id"], name: "index_meetings_on_match_id"
   end
 
   create_table "propietario_locals", force: :cascade do |t|
@@ -185,7 +177,5 @@ ActiveRecord::Schema.define(version: 2020_06_29_004411) do
   add_foreign_key "gustos_matchers", "matchers"
   add_foreign_key "likes", "matchers", column: "matcher1_id"
   add_foreign_key "likes", "matchers", column: "matcher2_id"
-  add_foreign_key "matches", "matchers", column: "matcher1_id"
-  add_foreign_key "matches", "matchers", column: "matcher2_id"
   add_foreign_key "songs", "matchers"
 end
