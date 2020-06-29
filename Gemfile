@@ -71,3 +71,8 @@ gem 'wdm', '>= 0.1.0',platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'rails_admin', '~> 2.0'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+gem 'wicked'
+gem 'best_in_place'
+gem 'rest-client'

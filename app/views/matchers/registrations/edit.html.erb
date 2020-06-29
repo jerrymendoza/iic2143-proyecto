@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -18,17 +18,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :Contraseña %> <i>(Dejar en blanco si no queires cambiar)</i><br />
+    <%= f.password_field :password, autocomplete: "Nueva contraseña" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> caracteres mínimo</em>
     <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :Confirmación_contraseña %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "Nueva contraseña" %>
   </div>
 
   <div class="field">
@@ -56,14 +56,22 @@
     <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
   </div>
 
-  <div class="field">
-    <% @gustos.each do |gusto| %>
-    <div>
-      <%= check_box_tag "gustos_ids[]", gusto.id, @matcher.gustos.include?(gusto)%>
-      <%= gusto.titulo %>
-    </div>
+  <ul uk-accordion>
+    <% @categories.each do |category| %>
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#"><%= category.nombre %></a>
+        <div class="uk-accordion-content">
+        <% category.gustos.each do |gusto| %>
+          <div>
+            <% tiene_gusto = resource.gustos.include? gusto %>
+            <%= check_box_tag "gustos_ids[]", gusto.id, checked = tiene_gusto %>
+            <%= gusto.titulo %>
+          </div>
+        <% end %>
+        </div>
+      </li>
     <% end %>
-  </div>
+  </ul>
 
   <div class="field">
     <%= f.label :descripcion %>
@@ -71,17 +79,23 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :genero %>
+    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :Contraseña_actual %> <i>(Necesitamos tu contraseña actual para realizar cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "Contraseña actual" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Cancelar mi cuenta</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>¿No estas a gusto? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Volver", :back, :class => 'uk-button uk-button-text' %>

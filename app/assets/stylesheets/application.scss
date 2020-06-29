@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+
+ @font-face {
+  font-family: 'AkzidenzEx';
+  src: url(font-path('AkzidenzEx.otf'))
+}
+@font-face {
+  font-family: 'ChaletNY';
+  src: url(font-path('ChaletNY.ttf'))
+}
+
+
+
+  body, html {
+    height: 100%;
+    background-color: #F4F4F8 !important;
+    margin:0;
+    padding: 0;
+  }
+  
+  .bg { 
+    /* The image used 
+    /* background-image: image-url("home.jpeg");*/
+    //background-image: image-url("home2.png");
+  
+    /* Full height */
+    height: 100%; 
+    position: relative;
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #container-signup {
+    
+    //color: #F4F4F8;
+    padding: 15px 25px;
+    width: 100%;
+    max-width: 50%;
+    max-height: 50%;    
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;top: 50%;
+  }
+  #container-signup h3 {
+    font-size: 10vh;
+    color:#FE4A49;
+    font-family: 'AkzidenzEx';
+  }
+#container-signup {
+    font-size: 3vh;
+    color:#191919;
+    font-family: 'AkzidenzEx';
+  }
+
+#name_app {
+  margin: 5px 0 0 40px;
+  font-family: 'ChaletNY';
+
+}
+#name_app h2 {
+  color:#191919;
+  //display: block;
+  font-size: 2em;
+  font-family: 'ChaletNY';
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.menu-icon {
+  color:black
+}
+
+.home-buttons .signin.uk-button-primary {
+  background-color:#FE4A49;
+}
+
+.home-buttons .signin.uk-button-primary:hover {
+  background-color:#fe5d5d;
+}
+.home-buttons .signup.uk-button-primary {
+  background-color:#2ab7ca;
+}
+
+.matching {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.matching > div {
+  width: 270px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  align-self: stretch
+}
+
+.app {
+  height: 100%;
+
+}
+.app > div {
+  padding-top:2%;
+}
+.left-side {
+  background-color: #e6e6ea;
+}
+.right-side{
+  padding-right: 20px;
+}
+.signin, .signout {
+  display:inline-block;
+}
+
+.name-song {
+  background-color:hsla(360, 100%, 100%, 0.49);
+  color: black;
+}

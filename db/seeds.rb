@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Gusto.create(:titulo => "Colores", :descripcion => "")
-Gusto.create(:titulo => "Comida", :descripcion => "")
-Gusto.create(:titulo => "Pelicula", :descripcion => "")
-Gusto.create(:titulo => "Deportes", :descripcion => "")
-Gusto.create(:titulo => "Musica", :descripcion => "")
-Gusto.create(:titulo => "Cine", :descripcion => "")
-Gusto.create(:titulo => "Teatro", :descripcion => "")
-Gusto.create(:titulo => "Juegos", :descripcion => "")
+Gusto.create(:titulo => "Colores")
+Gusto.create(:titulo => "Comida")
+Gusto.create(:titulo => "Pelicula")
+Gusto.create(:titulo => "Deportes")
+Gusto.create(:titulo => "Musica")
+Gusto.create(:titulo => "Cine")
+Gusto.create(:titulo => "Teatro")
+Gusto.create(:titulo => "Juegos")
 
 
 comuna = Comuna.create(:name => "Ñuñoa")

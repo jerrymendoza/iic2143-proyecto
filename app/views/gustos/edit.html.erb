@@ -5,8 +5,8 @@
   <div class= 'field'>
     <%= form.label :titulo %>
     <%= form.text_field :titulo %>
-    <%= form.label :descripcion %>
-    <%= form.text_field :descripcion %>
+    <%= form.label :category %>
+    <%= form.collection_select(:category_id, @categories, :id, :nombre, {:prompt => 'Seleccionar Categoría'}) %>
 
     <div class='actions'>
       <%=form.submit %>
@@ -14,4 +14,4 @@
 
 <%end%>
 
-<%= link_to 'Back', gustos_path %>
+<%= link_to 'Volver', gustos_path, :class => 'uk-button uk-button-text' %>
