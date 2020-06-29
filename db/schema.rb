@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_06_28_015645) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -127,6 +128,8 @@ ActiveRecord::Schema.define(version: 2020_06_28_015645) do
     t.bigint "comuna_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "access_token"
+    t.string "refresh_token"
     t.index ["comuna_id"], name: "index_matchers_on_comuna_id"
     t.index ["email"], name: "index_matchers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_matchers_on_reset_password_token", unique: true
@@ -168,6 +171,17 @@ ActiveRecord::Schema.define(version: 2020_06_28_015645) do
     t.index ["reset_password_token"], name: "index_propietario_locals_on_reset_password_token", unique: true
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string "name"
+    t.string "uri"
+    t.bigint "matcher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.string "preview"
+    t.index ["matcher_id"], name: "index_songs_on_matcher_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "gustos_matchers", "gustos"
   add_foreign_key "gustos_matchers", "matchers"
@@ -175,4 +189,5 @@ ActiveRecord::Schema.define(version: 2020_06_28_015645) do
   add_foreign_key "likes", "matchers", column: "matcher2_id"
   add_foreign_key "matches", "matchers", column: "matcher1_id"
   add_foreign_key "matches", "matchers", column: "matcher2_id"
+  add_foreign_key "songs", "matchers"
 end

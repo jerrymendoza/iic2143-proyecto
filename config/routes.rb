@@ -25,10 +25,13 @@ Rails.application.routes.draw do
     registrations: 'matchers/registrations'
   }
   resources :matcher_steps
+  
   match '/admins', to: 'admins#index', via: 'get'
   match '/matchers', to: 'matchers#index', via: 'get'
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'
   get 'matchs/:id', to: 'matches#show', as: 'matches'
+  get 'matchers/:id/spotify_request', to: 'matchers#spotify_request', as: 'spotify_request'
+  get '/spotify_callback', to: 'matchers#spotify_callback', as: 'spotify_callback'
   resources :comunas
   get 'locals/solicitudes', to: 'locals#index_no_aceptados'
   get 'locals/mis_locales', to: 'locals#index_locals_de_propietario_local'

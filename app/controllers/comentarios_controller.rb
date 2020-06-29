@@ -29,10 +29,10 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.update(comentario_params)
         format.html { redirect_to @local, notice: 'Comentario fue editado.' }
-        format.json { respond_with_bip(@comentario) } 
+        format.json { respond_with_bip(@comentario) }
       else
         format.html { render :edit }
-        format.json { respond_with_bip(@comentario) } 
+        format.json { respond_with_bip(@comentario) }
       end
     end
   end
@@ -42,7 +42,7 @@ class ComentariosController < ApplicationController
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to @local, notice: 'Tu comentario fue desrtuido.' }
+      format.html { redirect_to @local, notice: 'Tu comentario fue destruido.' }
       format.json { head :no_content }
     end
   end
