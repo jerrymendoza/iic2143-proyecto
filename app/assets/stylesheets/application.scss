@@ -384,7 +384,7 @@
   >.big-box-content {
     padding-top: 20px;
     padding-right: 20px;
-    width: 530px;
+    width: calc(100% - (340px));
     display: inline;
     float: right;
     .item {
@@ -436,7 +436,7 @@
   >.big-box-content {
     padding-top: 20px;
     padding-right: 20px;
-    width: 500px;
+    width: calc(100% - (390px));
     display: inline;
     float: right;
     .item {
