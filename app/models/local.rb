@@ -22,7 +22,7 @@ class Local < ApplicationRecord
 
   def self.buscar(busqueda)
     if busqueda
-      Local.where('aceptado = ? AND nombre LIKE ?', true, "%#{busqueda}%")
+      Local.where('aceptado = ? AND nombre ILIKE ?', true, "%#{busqueda}%")
     else
       Local.where(aceptado: true)
     end

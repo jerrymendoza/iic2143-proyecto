@@ -39,6 +39,8 @@
     </div>
     <% if @matcher == current_matcher %>
       <span uk-icon="icon: cog"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="uk-icon uk-icon-image" style="background-image:  url(<%= asset_path 'spotify.png' %>);"></span>&nbsp;&nbsp;<%= link_to 'Conectar con Spotify', spotify_request_path, :class => 'uk-button uk-button-text' %>
+    <% elsif admin_signed_in? %>
+      <span uk-icon="icon: trash"></span>&nbsp;&nbsp;<%= link_to 'Eliminar', {:controller => "matchers/registrations", :action => "destroy", :id => @matcher.id}, :method=>:delete , :class => 'uk-button uk-button-text'%>
     <% end %>
   </div>
 
@@ -56,7 +58,7 @@
     <ul class="uk-slider-items uk-child-width-1-6 ">
         <% @matcher.songs.each do |song| %>
         <li>
-            <a href="<%= song.uri %>" ><img src="<%= song.image %>" alt="<%= song.name %>" height="170px"></a>
+            <a href="<%= song.uri %>" target="_blank" ><img src="<%= song.image %>" alt="<%= song.name %>" height="170px"></a>
         </li>
 <% end %>
     </ul>
