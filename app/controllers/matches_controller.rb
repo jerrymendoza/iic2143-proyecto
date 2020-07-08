@@ -5,9 +5,8 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
-    @locals = Local.all
     @meeting = Meeting.new
-
+    @locals = Local.where(aceptado: true)
     @meeting = @match.meeting if @match.meeting
   end
 end

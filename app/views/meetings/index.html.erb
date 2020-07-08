@@ -15,8 +15,9 @@
         <% if meeting %>
         <div class="uk-card-small uk-grid-collapse uk-child-width-auto@s" uk-grid>
         <div class="uk-card-body">
-            <% if meeting.match.matcher2.imagen.attached? %>
-              <image class="uk-border-circle" width="160" height="160" src="<%=(url_for(meeting.match.matcher2.imagen))%>"  >
+            <% otro_matcher = if current_matcher != meeting.match.matcher1 then meeting.match.matcher1 else meeting.match.matcher2 end %>
+            <% if otro_matcher.imagen.attached? %>
+              <image class="uk-border-circle" width="160" height="160" src="<%=(url_for(otro_matcher.imagen))%>"  >
             <% else %>
               <image class="uk-border-circle" width="160" height="160" src="<%= asset_path 'default-matcher-image.png' %>">
             <% end %>
@@ -38,7 +39,7 @@
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title"> Acciones </h3>
-                <p><span uk-icon="icon: info"></span>&nbsp;<%= link_to 'Mostrar', meeting, :class => 'uk-button uk-button-text' %></p>
+                <p><span uk-icon="icon: info"></span>&nbsp;<%= link_to 'Mostrar', meeting.match, :class => 'uk-button uk-button-text' %></p>
                 <p><span uk-icon="icon: cog"></span>&nbsp;<%= link_to 'Editar', edit_meeting_path(meeting), :class => 'uk-button uk-button-text' %></p>
                 <p><span uk-icon="icon: close"></span>&nbsp;<%= link_to 'Eliminar', meeting_path(meeting.id), method: :delete, data: {confirm: 'Seguro?'}, :class => 'uk-button uk-button-text'%></p>
             </div>
