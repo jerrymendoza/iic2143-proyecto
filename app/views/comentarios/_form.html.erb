@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :valoracion, "valoración" %>
+    <span uk-icon="icon: star"></span>&nbsp;&nbsp;<%= form.label :valoracion, "Valoración" %>
     <%= form.select(:valoracion, [1, 2, 3, 4, 5], {:prompt => 'seleccionar valoración'},  :class => 'uk-select')  %>
   </div>
 
   <div class="field">
-    <%= form.label :contenido, "contenido" %>
+    <span uk-icon="icon: comment"></span>&nbsp;&nbsp;<%= form.label :contenido, "Contenido" %>
     <%= form.text_area :contenido, :class => 'uk-width-2 uk-textarea' %>
   </div>
 

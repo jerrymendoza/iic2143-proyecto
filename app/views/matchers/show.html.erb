@@ -8,40 +8,40 @@
   </div>
   <div class="big-box-content">
     <div class="item">
-      <span>nombre:</span>
+      <span>Nombre:</span>
       <%= @matcher.nombre %>
     </div>
-      
+
     <div class="item">
-      <span>edad:</span>
+      <span>Edad:</span>
       <%= @matcher.edad %>
     </div>
 
     <div class="item">
-      <span>descripción:</span>
+      <span>Descripción:</span>
       <%= @matcher.descripcion %>
     </div>
 
     <div class="item">
-      <span>gustos:</span>
+      <span>Gustos:</span>
       <% @matcher.gustos.each do |gusto| %>
         <%= gusto.titulo %>
       <% end %>
     </div>
 
     <div class="item">
-      <span>género:</span>
+      <span>Género:</span>
       <%= @matcher.genero %>
     </div>
     <div class="item">
-      <span>comuna:</span>
+      <span>Comuna:</span>
       <%= @matcher.comuna.name if not @matcher.comuna.nil?  %>
     </div>
     <% if @matcher == current_matcher %>
       <span uk-icon="icon: cog"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="uk-icon uk-icon-image" style="background-image:  url(<%= asset_path 'spotify.png' %>);"></span>&nbsp;&nbsp;<%= link_to 'Conectar con Spotify', spotify_request_path, :class => 'uk-button uk-button-text' %>
     <% end %>
   </div>
-    
+
 </div>
 
 <div class="box-spotify">
@@ -50,10 +50,10 @@
 
 <% if @matcher.songs %>
   <div class="color-black spotify-imgs">
-    <img src="https://logodownload.org/wp-content/uploads/2020/03/listen-on-spotify.png" width="100px">  <strong>mis favoritos:</strong></div>
+    <img src="https://logodownload.org/wp-content/uploads/2020/03/listen-on-spotify.png" width="100px">  <strong>Mis favoritos:</strong></div>
   <br>
-  <div class="uk-position-relative uk-visible-toggle uk-light spotify-imgs" tabindex="-1" uk-slider>
-    <ul class="uk-slider-items uk-child-width-1-6">
+  <div class="uk-position-relative uk-visible-toggle uk-light spotify-imgs " tabindex="-1" uk-slider = "autoplay: true ; autoplay-interval: 3000">
+    <ul class="uk-slider-items uk-child-width-1-6 ">
         <% @matcher.songs.each do |song| %>
         <li>
             <a href="<%= song.uri %>" ><img src="<%= song.image %>" alt="<%= song.name %>" height="170px"></a>
@@ -69,6 +69,3 @@
 
 
 </div>
-
-
-
