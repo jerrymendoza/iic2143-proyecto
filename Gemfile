@@ -76,3 +76,4 @@ gem 'jquery-rails'
 gem 'wicked'
 gem 'best_in_place'
 gem 'rest-client'
+gem "google-cloud-storage", "~> 1.8", require: false

@@ -26,6 +26,8 @@ Metrics/AbcSize:
   Max: 50
 Metrics/PerceivedComplexity:
   Max: 10
+Metrics/ClassLength:
+  Max: 110
 Style/IfUnlessModifier:
   Enabled: false
 Style/GuardClause:
