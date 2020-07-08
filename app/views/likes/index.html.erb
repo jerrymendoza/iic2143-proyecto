@@ -1,16 +1,26 @@
 <h1>Mis Likes</h1>
 
 <table>
-  <thead>
-
-  </thead>
 
   <tbody>
     <% current_matcher.matcher1_likes.each do |like| %>
-      <tr>
-        <td><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= link_to like.matcher2.nombre, matcher_path(id: like.matcher2.id), :class => 'uk-button uk-button-text' %></td>
-        <td>&nbsp;&nbsp;<%= link_to 'Dislike', like,:class => 'uk-button uk-button-text', method: :delete, data: { confirm: 'Seguro?' } %><span uk-icon="icon: close"></span></td>
-      </tr>
+    <div class="uk-card-small uk-grid-collapse uk-child-width-auto@s" uk-grid>
+    <div class="uk-card-body">
+        <% if like.matcher2.imagen.attached? %>
+          <image class="uk-border-circle" width="80" height="80" src="<%=(url_for(like.matcher2.imagen))%>"  >
+        <% else %>
+          <image class="uk-border-circle" width="80" height="80" src="<%= asset_path 'default-matcher-image.png' %>">
+        <% end %>
+    </div>
+    <div>
+        <div class="uk-card-body">
+            <h3 class="uk-card-title"><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= link_to like.matcher2.nombre, matcher_path(id: like.matcher2.id), :class => 'uk-button uk-button-text' %></h3>
+            <p><span uk-icon="icon: close"></span>&nbsp;&nbsp;<%= link_to 'Dislike', like,:class => 'uk-button uk-button-text', method: :delete, data: { confirm: 'Seguro?' } %></p>
+        </div>
+    </div>
+    </div>
+
+
     <% end %>
   </tbody>
 </table>
