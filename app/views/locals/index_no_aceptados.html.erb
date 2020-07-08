@@ -4,10 +4,7 @@
   <table>
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Comuna</th>
-        <th>Direccion</th>
-        <th>Descripcion</th>
+      
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -15,13 +12,33 @@
     <tbody>
       <% @locals_no_aceptados.each do |local| %>
         <tr>
-          <td><%= local.nombre %></td>
-          <td><%= local.comuna.name if not local.comuna.nil? %></td>
-          <td><%= local.direccion %></td>
-          <td><%= local.descripcion %></td>
-          <td><%= button_to 'Detalles', local, :method => :get, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %></td>
-          <td><%= button_to 'Aceptar', {:controller => "locals", :action => "enviar_aceptar_local", :id => local }, :method => :patch, remote: true, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %></td>
-          <td><%= button_to 'Rechazar', local, method: :delete, data: { confirm: '¿Seguro quieres rechazar este local?' }, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %></td>
+          <div class="uk-card-small uk-grid-collapse uk-child-width-auto@s" uk-grid>
+          <div class="uk-card-body">
+              <% if local.imagen.attached? %>
+                <image class="uk-border-circle" width="160" height="160" src="<%=(url_for(local.imagen))%>"  >
+              <% else %>
+                <image class="uk-border-circle" width="160" height="160" src="<%= asset_path 'default-matcher-image.png' %>">
+              <% end %>
+          </div>
+          <div>
+              <div class="uk-card-body">
+                  <h3 class="uk-card-title"><span uk-icon="icon: location"></span>&nbsp;<%= local.nombre %></h3>
+                  <p><span uk-icon="icon: world"></span>&nbsp;<%= local.comuna.name if not local.comuna.nil? %></p>
+                  <p><span uk-icon="icon: location"></span>&nbsp;<%= local.direccion %></p>
+                  <p><span uk-icon="icon: comment"></span>&nbsp;<%= local.descripcion %></p>
+
+              </div>
+          </div>
+          <div>
+              <div class="uk-card-body">
+                  <h3 class="uk-card-title"> Acciones </h3>
+                  <p><span uk-icon="icon: info"></span>&nbsp;<%= link_to 'Detalles', local, :method => :get, :class => 'uk-button uk-button-text' %></p>
+                  <p><span uk-icon="icon: check"></span>&nbsp;<%= link_to 'Aceptar', {:controller => "locals", :action => "enviar_aceptar_local", :id => local }, :method => :patch, remote: true, :class => 'uk-button uk-button-text' %></p>
+                  <p><span uk-icon="icon: close"></span>&nbsp;<%= link_to 'Rechazar', local, method: :delete, data: { confirm: '¿Seguro quieres rechazar este local?' }, :class => 'uk-button uk-button-text'%></p>
+              </div>
+          </div>
+          </div>
+
         </tr>
       <% end %>
     </tbody>

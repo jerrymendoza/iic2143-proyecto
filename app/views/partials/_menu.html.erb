@@ -12,20 +12,36 @@
       <li><span uk-icon="icon: location"></span>&nbsp;&nbsp;<%= link_to 'Locales', locals_path, :class => 'uk-button uk-button-text' %></li>
       <% if admin_signed_in? %>
         <li><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %></li>
-        <li><span uk-icon="icon: location"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: world"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: thumbnails"></span>&nbsp;&nbsp;<%= link_to 'Categorias', categories_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: list"></span>&nbsp;&nbsp;<%= link_to 'Gustos', gustos_path, :class => 'uk-button uk-button-text' %></li>
       <% elsif propietario_local_signed_in? %>
           <li><span uk-icon="icon: cart"></span>&nbsp;&nbsp;<%= link_to 'Mis Locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %></li>
+          <li><span uk-icon="icon: world"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
       <% end %>
-      <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
-      
+
+
       <% if matcher_signed_in? %>
+        <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: shrink"></span>&nbsp;&nbsp;<%= link_to 'Mis Match', mis_matches_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= link_to 'Likes', likes_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;<%= link_to 'Meetings', meetings_path, :class => 'uk-button uk-button-text' %></li>
 
-        <div class="uk-position-small uk-position-bottom">
-         <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Mi Perfil', matcher_path(id: current_matcher), :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;
-         |&nbsp;&nbsp;<span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_matcher_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+
+        <div class="uk-position-small uk-position-bottom ">
+          <div class="uk-position-center uk-position-relative">
+          <% if current_matcher.imagen.attached? %>
+              <image class="uk-border-circle" width="130" height="130" src="<%=(url_for(current_matcher.imagen))%>"  >
+            <% else %>
+              <image class="uk-border-circle" width="130" height="130" src="<%= asset_path 'default-matcher-image.png' %>">
+          <% end %>
+          </div>
+
+        <div class="uk-position-center uk-position-relative">
+         <li><span uk-icon="icon: user"></span>&nbsp;&nbsp;<%= link_to 'Mi Perfil', matcher_path(id: current_matcher), :class => 'uk-button uk-button-text' %>&nbsp;
+         |&nbsp;<span uk-icon="icon: sign-out"></span>&nbsp;&nbsp;<%= link_to "Logout", destroy_matcher_session_path, method: :delete, :class => 'uk-button uk-button-text'  %></li>
+        </div>
         </div>
       <% elsif propietario_local_signed_in?%>
       <div class="uk-position-small uk-position-bottom">
