@@ -2,6 +2,7 @@ class ComentariosController < ApplicationController
   before_action :set_comentario, only: %i[edit show update destroy verificar_matcher]
   before_action :set_local
   before_action :authenticate_matcher!
+  before_action :authenticate_todos!, only: %i[show index]
   before_action only: %i[edit update destroy] do
     verificar_matcher(@comentario)
   end

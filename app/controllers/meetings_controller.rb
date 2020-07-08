@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[show edit update destroy enviar_aceptar_por_matcher]
   before_action :set_match, only: %i[create]
   before_action :set_locals, only: %i[new create edit update]
+  before_action :authenticate_matcher!, only: %i[show index]
   after_action :enviar_aceptar_por_matcher, only: %i[create update]
 
   def new

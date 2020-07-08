@@ -6,6 +6,7 @@ class LocalsController < ApplicationController
   before_action :set_comunas, only: %i[new create edit]
   before_action :authenticate_admin!, only: %i[index_no_aceptados enviar_aceptar_local]
   before_action :comprobar_tuvo_cita, only: %i[show]
+  before_action :authenticate_todos!, only: %i[show index]
 
   # GET /locals
   # GET /locals.json
@@ -109,14 +110,16 @@ class LocalsController < ApplicationController
 
   def comprobar_tuvo_cita
     @tuvo_cita = false
-    current_matcher.matcher1_matches.each do |match_i|
-      if @local.meetings.include? match_i.meeting
-        @tuvo_cita = true
+    if current_matcher
+      current_matcher.matcher1_matches.each do |match_i|
+        if @local.meetings.include? match_i.meeting
+          @tuvo_cita = true
+        end
       end
-    end
-    current_matcher.matcher2_matches.each do |match_i|
-      if @local.meetings.include? match_i.meeting
-        @tuvo_cita = true
+      current_matcher.matcher2_matches.each do |match_i|
+        if @local.meetings.include? match_i.meeting
+          @tuvo_cita = true
+        end
       end
     end
   end

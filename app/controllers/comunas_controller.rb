@@ -1,6 +1,7 @@
 class ComunasController < ApplicationController
   before_action :set_comuna, only: %i[show edit update destroy]
   before_action :authenticate_admin!, only: %i[new edit create update destroy]
+  before_action :authenticate_todos!, only: %i[show index]
 
   # GET /comunas
   # GET /comunas.json

@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :set_like, only: %i[show edit update destroy verificar_matcher]
-  before_action :authenticate_matcher!, only: %i[new create index destroy]
+  before_action :authenticate_matcher!, only: %i[new show create index destroy]
   before_action only: %i[edit destroy] do
     verificar_matcher(@like)
   end

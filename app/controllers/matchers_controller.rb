@@ -1,6 +1,6 @@
 class MatchersController < ApplicationController
   before_action :set_matcher, only: %i[edit show verificar_matcher]
-  before_action :authenticate_admin_matcher!, only: %i[edit update destroy]
+  before_action :authenticate_admin_matcher!, only: %i[edit index show update destroy]
   before_action only: %i[edit update destroy] do
     verificar_matcher(@matcher)
   end
