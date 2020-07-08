@@ -12,7 +12,6 @@ class ComunasController < ApplicationController
   # GET /comunas/1.json
   def show
     @locals = Local.where(aceptado: true)
-
   end
 
   # GET /comunas/new

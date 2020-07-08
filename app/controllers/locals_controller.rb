@@ -1,11 +1,10 @@
- class LocalsController < ApplicationController
+class LocalsController < ApplicationController
   before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local verificar_propietario_local]
   before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
   before_action :verificar_propietario_local, only: %i[edit update destroy]
   before_action :authenticate_propietario_local!, only: %i[new create index_locals_de_propietario_local]
   before_action :set_comunas, only: %i[new create edit]
   before_action :authenticate_admin!, only: %i[index_no_aceptados enviar_aceptar_local]
-
 
   # GET /locals
   # GET /locals.json
@@ -23,7 +22,7 @@
 
   # GET /locals/1
   # GET /locals/1.json
-  def show    
+  def show
     @comentario = Comentario.new
     suma = 0
     cont = 0
@@ -33,11 +32,12 @@
         cont += 1
       end
     end
-    if cont != 0
-      @promedio = (suma.to_f/cont.to_f).round 1
-    else
-      @promedio = 0
-    end
+    @promedio = if cont != 0
+                  suma_f = suma.to_f
+                  (suma_f / cont.to_f).round 1
+                else
+                  0
+                end
   end
 
   # GET /locals/new
@@ -89,7 +89,8 @@
     end
   end
 
-  def enviar_aceptar_local #indica al model aceptar el local
+  def enviar_aceptar_local
+    # indica al model aceptar el local
     @local.aceptar_local
     respond_to do |format|
       format.html { redirect_to locals_solicitudes_path, notice: 'Se ha aceptado el local.' }

@@ -8,21 +8,21 @@ class Local < ApplicationRecord
   after_create :set_aceptado
 
   def set_aceptado
-    self.update_attributes(:aceptado => false)
+    update_attributes(aceptado: false)
   end
 
   def eliminar_relaciones
-  	self.comentarios.destroy_all
-  	#self.meetings.destroy_all
+    comentarios.destroy_all
+    # self.meetings.destroy_all
   end
 
   def aceptar_local
-    self.update_attributes(:aceptado => true)
+    update_attributes(aceptado: true)
   end
 
-  def self.buscar busqueda
+  def self.buscar(busqueda)
     if busqueda
-      Local.where("aceptado = ? AND nombre LIKE ?", true, "%#{busqueda}%")
+      Local.where('aceptado = ? AND nombre LIKE ?', true, "%#{busqueda}%")
     else
       Local.where(aceptado: true)
     end

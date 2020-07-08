@@ -7,8 +7,7 @@ class LikesController < ApplicationController
 
   # GET /likes
   # GET /likes.json
-  def index
-  end
+  def index; end
 
   # GET /likes/1
   # GET /likes/1.json
@@ -30,25 +29,24 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.save
-        #find match
+        # find match
         find1 = Like.where('matcher1_id = (?) AND matcher2_id = (?)', current_matcher.id, matcher2.id).take
         find2 = Like.where('matcher1_id = (?) AND matcher2_id = (?)', matcher2.id, current_matcher.id).take
-        
+
         if find1 && find2
-          puts "**** MATCH! ****"
+          puts '**** MATCH! ****'
           @match = Match.new(matcher1: current_matcher, matcher2: matcher2)
           if @match.save
             redirect_to matches_path(@match.id)
             return
           else
-            puts "Uff"
+            puts 'Uff'
           end
-          #redirect_to url_for(:controller => :meetings, :action => :new) 
-          return
+          # redirect_to url_for(:controller => :meetings, :action => :new)
         else
           prev = Rails.application.routes.recognize_path(request.referrer)
           redirect_to controller: prev[:controller], action: prev[:action]
-          return 
+          return
         end
         format.html { redirect_to @like, notice: 'Like creado exitosamente.' }
         format.json { render :show, status: :created, location: @like }
@@ -83,7 +81,7 @@ class LikesController < ApplicationController
     end
   end
 
-  def verificar_matcher like
+  def verificar_matcher(like)
     unless current_matcher == like.matcher1
       redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end

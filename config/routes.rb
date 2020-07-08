@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     registrations: 'matchers/registrations'
   }
   resources :matcher_steps
-  
+
   match '/admins', to: 'admins#index', via: 'get'
   match '/matchers', to: 'matchers#index', via: 'get'
   get 'matchers/:id', to: 'matchers#show', as: 'matcher'

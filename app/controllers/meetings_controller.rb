@@ -8,13 +8,11 @@ class MeetingsController < ApplicationController
   # GET /meetings.json
   def index
     @meetings = []
-    matches_de_matcher = Match.where("matcher1_id = (?) OR matcher2_id = (?)", current_matcher.id, current_matcher.id)
-  
+    matches_de_matcher = Match.where('matcher1_id = (?) OR matcher2_id = (?)', current_matcher.id, current_matcher.id)
+
     matches_de_matcher.each do |match_i|
       meeting = Meeting.where(match: match_i)
-      if meeting
-        @meetings << meeting[0]
-      end 
+      @meetings << meeting[0] if meeting
     end
   end
 
@@ -30,8 +28,8 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.match = @match
-    @meeting.update_attributes(:aceptado_1 => false)
-    @meeting.update_attributes(:aceptado_2 => false)
+    @meeting.update_attributes(aceptado_1: false)
+    @meeting.update_attributes(aceptado_2: false)
 
     respond_to do |format|
       if @meeting.save
@@ -49,10 +47,10 @@ class MeetingsController < ApplicationController
   def update
     respond_to do |format|
       if @meeting.update(meeting_params)
-        @meeting.update_attributes(:aceptado_1 => false)
-        @meeting.update_attributes(:aceptado_2 => false)
+        @meeting.update_attributes(aceptado_1: false)
+        @meeting.update_attributes(aceptado_2: false)
         format.html { redirect_to meetings_path, notice: 'Se actualizó la cita, espera que el otro matcher responda' }
-        format.json { render :show, status: :ok, location:  meetings_path }
+        format.json { render :show, status: :ok, location: meetings_path }
       else
         format.html { render :edit }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
@@ -93,6 +91,4 @@ class MeetingsController < ApplicationController
   def meeting_params
     params.require(:meeting).permit(:local_id, :fecha, :hora)
   end
-
-  
 end

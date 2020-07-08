@@ -11,7 +11,6 @@ class ComentariosController < ApplicationController
   def create
     @comentario = current_matcher.comentarios.new(comentario_params)
     @comentario.local = @local
-
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @local, notice: 'Comentario creado.' }
@@ -29,11 +28,10 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.update(comentario_params)
         format.html { redirect_to @local, notice: 'Comentario fue editado.' }
-        format.json { respond_with_bip(@comentario) }
       else
         format.html { render :edit }
-        format.json { respond_with_bip(@comentario) }
       end
+      format.json { respond_with_bip(@comentario) }
     end
   end
 
