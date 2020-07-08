@@ -14,8 +14,8 @@
         <li><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: world"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
-        <li><span uk-icon="icon: thumbnails"></span>&nbsp;&nbsp;<%= link_to 'Categorias', categories_path, :class => 'uk-button uk-button-text' %></li>
-        <li><span uk-icon="icon: list"></span>&nbsp;&nbsp;<%= link_to 'Gustos', gustos_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: tag"></span>&nbsp;&nbsp;<%= link_to 'Categorias', categories_path, :class => 'uk-button uk-button-text' %></li>
+        <li><span uk-icon="icon: thumbnails"></span>&nbsp;&nbsp;<%= link_to 'Gustos', gustos_path, :class => 'uk-button uk-button-text' %></li>
       <% elsif propietario_local_signed_in? %>
           <li><span uk-icon="icon: cart"></span>&nbsp;&nbsp;<%= link_to 'Mis Locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %></li>
           <li><span uk-icon="icon: world"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
@@ -23,6 +23,7 @@
 
 
       <% if matcher_signed_in? %>
+        <li><span uk-icon="icon: world"></span>&nbsp;&nbsp;<%= link_to 'Comunas', comunas_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: users"></span>&nbsp;&nbsp;<%= link_to 'Matchers', matchers_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: shrink"></span>&nbsp;&nbsp;<%= link_to 'Mis Match', mis_matches_path, :class => 'uk-button uk-button-text' %></li>
         <li><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= link_to 'Likes', likes_path, :class => 'uk-button uk-button-text' %></li>
