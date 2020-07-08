@@ -80,7 +80,7 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
                                       <h4 class="uk-comment-title uk-margin-remove"><%= comentario.matcher.nombre %></h4>
                                       <p class="uk-comment-meta uk-margin-remove-top"><%= comentario.created_at.strftime("%H:%M %d-%m-%Y") %>
                                       <br>
-                                      valoracion local: <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %>
+                                      valoracion local: <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %> / 5 
                                       </p>
 
                                   </div>
@@ -113,14 +113,14 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
 
         <% end %>
         <%  if @local.propietario_local == current_propietario_local %>
-          <%= link_to 'Editar', edit_local_path(@local) %> |
+          <%= link_to 'Editar', edit_local_path(@local), :class => 'uk-button uk-button-text' %> |
         <% end %>
         <%  if propietario_local_signed_in? %>
-          <%= link_to 'Mis locales', locals_mis_locales_path %> |
-          <%= link_to 'Locales', locals_mis_locales_path %>
+          <%= link_to 'Mis locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %> |
+          <%= link_to 'Locales', locals_mis_locales_path, :class => 'uk-button uk-button-text' %>
         <% end %>
         <%  if admin_signed_in? %>
-          <%= link_to 'Solicitudes', locals_solicitudes_path %> |
-          <%= link_to 'Locales', locals_path %>
+          <%= link_to 'Solicitudes', locals_solicitudes_path, :class => 'uk-button uk-button-text' %> |
+          <%= link_to 'Locales', locals_path, :class => 'uk-button uk-button-text' %>
         <% end %>
 </div>
