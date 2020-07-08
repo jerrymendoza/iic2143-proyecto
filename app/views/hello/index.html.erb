@@ -1,29 +1,34 @@
-
 <% if matcher_signed_in? %>
   <% if current_matcher %>
-    <h4>Hola Matcher! </h4>
-    <div class="uk-position-relative uk-visible-toggle uk-light uk-width-3-5" tabindex="-1" uk-slideshow >
+    <div id="content-home-matcher">
 
-    <ul class="uk-slideshow-items">
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
-        </li>
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion-1.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !* -*, !* +*">
-        </li>
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion-2.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
-        </li>
-    </ul>
-
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
+    <div class="text">
+      <span>like<span>
+      <span>match<span>
+      <span class="color-date">date<span>
+    </div>
+    <div id="content-cards-matcher">
+    <div class="matcher-home" id="matcher-home1">
+      <div class="content-card-matcher">
+      <span>1.like<span>
+      <p>kljsljhd dslkhds jdshsd ldlkjdhs dskdskl</p>
+      </div>
+    </div>
+    <div class="matcher-home" id="matcher-home2">
+      <div class="content-card-matcher">
+      <span>2.match<span>
+      </div>
+    </div>
+    <div class="matcher-home" id="matcher-home3">
+    <div class="content-card-matcher">
+    <span>3.date<span>
+    </div>
+    </div>
+    </div>
   </div>
 
   <% end %>
 <% end %>
-
 
 <% if admin_signed_in? %>
   <% if current_admin %>
@@ -53,25 +58,10 @@
 
 <% if propietario_local_signed_in? %>
   <% if current_propietario_local %>
-    <h4>Hola Propietario de Local! </h4>
-    
-    <div class="uk-position-relative uk-visible-toggle uk-light uk-width-3-5" tabindex="-1" uk-slideshow >
-
-    <ul class="uk-slideshow-items">
-        <li>
-            <img data-src="assets/imagen-transicion.jpg" width="" height="" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
-        </li>
-        <li>
-            <img data-src="assets/imagen-transicion-1.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !* +*">
-        </li>
-        <li>
-            <img data-src="assets/imagen-transicion-2.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
-        </li>
-    </ul>
-
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
+  <div id="content-home-local">
+    <div class="local-home" id="local-home1"></div>
+    <div class="local-home" id="local-home2"></div>
+    <div class="local-home" id="local-home3"></div>
   </div>
   <% end %>
 <% end %>

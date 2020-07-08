@@ -1,69 +1,62 @@
-<div uk-grid>
-
-  <div class="uk-width-1-4">
-  <p>
+<div id="big-box" class="box-shadow">
+  <div class="box-img">
     <% if @matcher.imagen.attached? %>
-      <image src="<%=(url_for(@matcher.imagen))%>" width = '350px' >
-    <% else %>
-      <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" width = '350px'>
+        <image src="<%=(url_for(@matcher.imagen))%>" width = '290px' >
+      <% else %>
+        <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" width = '290px'>
     <% end %>
-  </p>
+  </div>
+  <div class="big-box-content">
+    <div class="item">
+      <span>Nombre:</span>
+      <%= @matcher.nombre %>
+    </div>
 
+    <div class="item">
+      <span>Edad:</span>
+      <%= @matcher.edad %>
+    </div>
+
+    <div class="item">
+      <span>Descripción:</span>
+      <%= @matcher.descripcion %>
+    </div>
+
+    <div class="item">
+      <span>Gustos:</span>
+      <% @matcher.gustos.each do |gusto| %>
+        <%= gusto.titulo %>
+      <% end %>
+    </div>
+
+    <div class="item">
+      <span>Género:</span>
+      <%= @matcher.genero %>
+    </div>
+    <div class="item">
+      <span>Comuna:</span>
+      <%= @matcher.comuna.name if not @matcher.comuna.nil?  %>
+    </div>
+    <% if @matcher == current_matcher %>
+      <span uk-icon="icon: cog"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="uk-icon uk-icon-image" style="background-image:  url(<%= asset_path 'spotify.png' %>);"></span>&nbsp;&nbsp;<%= link_to 'Conectar con Spotify', spotify_request_path, :class => 'uk-button uk-button-text' %>
+    <% end %>
   </div>
 
+</div>
 
-  <div class="uk-width-3-4">
-  <p>
-    <strong>Nombre:</strong>
-    <%= @matcher.nombre %>
-  </p>
-
-  <p>
-    <strong>Edad:</strong>
-    <%= @matcher.edad %>
-  </p>
-
-  <p>
-    <strong>Rut:</strong>
-    <%= @matcher.rut %>
-  </p>
-
-  <p>
-    <strong>Descripción:</strong>
-    <%= @matcher.descripcion %>
-  </p>
-
-  <p>
-    <strong>Gustos:</strong>
-    <% @matcher.gustos.each do |gusto| %>
-      <%= gusto.titulo %>
-    <% end %>
-  </p>
-
-  <p>
-    <strong>Género:</strong>
-    <%= @matcher.genero %>
-  </p>
-
-  <p>
-    <strong>Comuna:</strong>
-    <%= @matcher.comuna.name if not @matcher.comuna.nil?  %>
-  </p>
-  <% if @matcher == current_matcher %>
-    <span uk-icon="icon: cog"></span>&nbsp;&nbsp;<%= link_to 'Editar Perfil', edit_matcher_registration_path, :class => 'uk-button uk-button-text' %>&nbsp;&nbsp;|&nbsp;&nbsp;<span class="uk-icon uk-icon-image" style="background-image:  url(<%= asset_path 'spotify.png' %>);"></span>&nbsp;&nbsp;<%= link_to 'Conectar con Spotify', spotify_request_path, :class => 'uk-button uk-button-text' %>
-  <% end %>
-  </div>
+<div class="box-spotify">
 
 
 
 <% if @matcher.songs %>
-  <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
-
-    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m">
+  <div class="color-black spotify-imgs">
+    <img src="https://logodownload.org/wp-content/uploads/2020/03/listen-on-spotify.png" width="100px">  <strong>Mis favoritos:</strong></div>
+  <br>
+  <div class="uk-position-relative uk-visible-toggle uk-light spotify-imgs " tabindex="-1" uk-slider = "autoplay: true ; autoplay-interval: 3000">
+    <ul class="uk-slider-items uk-child-width-1-6 ">
         <% @matcher.songs.each do |song| %>
         <li>
-            <img src="<%= song.image %>" alt="<%= song.name %>">
-            <div class="uk-position-center uk-panel"><p class="name-song"><%= song.name %></p></div>
+            <a href="<%= song.uri %>" ><img src="<%= song.image %>" alt="<%= song.name %>" height="170px"></a>
         </li>
 <% end %>
     </ul>
@@ -76,6 +69,3 @@
 
 
 </div>
-
-
-

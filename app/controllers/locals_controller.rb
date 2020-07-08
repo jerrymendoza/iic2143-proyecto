@@ -25,6 +25,19 @@
   # GET /locals/1.json
   def show    
     @comentario = Comentario.new
+    suma = 0
+    cont = 0
+    @local.comentarios.each do |comentario|
+      if comentario.valoracion
+        suma += comentario.valoracion
+        cont += 1
+      end
+    end
+    if cont != 0
+      @promedio = (suma.to_f/cont.to_f).round 1
+    else
+      @promedio = 0
+    end
   end
 
   # GET /locals/new

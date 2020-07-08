@@ -4,10 +4,7 @@
 <table>
   <thead>
     <tr>
-      <th>Local</th>
-      <th>Like</th>
-      <th>Fecha</th>
-      <th>Estado</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,19 +13,38 @@
     <% @meetings.each do |meeting| %>
       <tr>
         <% if meeting %>
-          <td><%= meeting.local.nombre %></td>
-          <td><%= meeting.fecha %></td>
-          <td><%= meeting.hora %></td>
-          <% if (not(meeting.aceptado_1) && meeting.match.matcher1 == current_matcher) || (not(meeting.aceptado_2) && meeting.match.matcher2 == current_matcher) %>
-            <td><%= button_to 'Aceptar', {:controller => "meetings", :action => "enviar_aceptar_por_matcher", :id => meeting.id}, :method => :patch, remote: true, :class => 'uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom' %></td>
-          <% elsif meeting.aceptado_1 && meeting.aceptado_2 %>
-            <td>Confirmada</td>
-          <% else %>
-            <td> Esperando </td>
-          <% end %>
-          <td><%= link_to 'Mostrar', meeting %></td>
-          <td><%= link_to 'Editar', edit_meeting_path(meeting) %></td>
-          <td><%= link_to 'Eliminar', meeting_path(meeting.id), method: :delete, data: {confirm: 'Seguro?'} %></td>
+        <div class="uk-card-small uk-grid-collapse uk-child-width-auto@s" uk-grid>
+        <div class="uk-card-body">
+            <% if meeting.match.matcher2.imagen.attached? %>
+              <image class="uk-border-circle" width="160" height="160" src="<%=(url_for(meeting.match.matcher2.imagen))%>"  >
+            <% else %>
+              <image class="uk-border-circle" width="160" height="160" src="<%= asset_path 'default-matcher-image.png' %>">
+            <% end %>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title"><span uk-icon="icon: location"></span>&nbsp;<%= meeting.local.nombre %></h3>
+                <p><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;<%= meeting.fecha.strftime("%d-%m-%Y") %></p>
+                <p><span uk-icon="icon: clock"></span>&nbsp;&nbsp;<%= meeting.hora.strftime("%H:%M") %></p>
+                <% if (not(meeting.aceptado_1) && meeting.match.matcher1 == current_matcher) || (not(meeting.aceptado_2) && meeting.match.matcher2 == current_matcher) %>
+                  <p><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Aceptas?', {:controller => "meetings", :action => "enviar_aceptar_por_matcher", :id => meeting.id}, :method => :patch, remote: true, :class => 'uk-button uk-button-text'%></p>
+                <% elsif meeting.aceptado_1 && meeting.aceptado_2 %>
+                  <p><span uk-icon="icon: check"></span>&nbsp; Respuesta confirmada</p>
+                <% else %>
+                  <p><span uk-icon="icon: more"></span>&nbsp; Esperando respuesta </p>
+                <% end %>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title"> Acciones </h3>
+                <p><span uk-icon="icon: info"></span>&nbsp;<%= link_to 'Mostrar', meeting, :class => 'uk-button uk-button-text' %></p>
+                <p><span uk-icon="icon: cog"></span>&nbsp;<%= link_to 'Editar', edit_meeting_path(meeting), :class => 'uk-button uk-button-text' %></p>
+                <p><span uk-icon="icon: close"></span>&nbsp;<%= link_to 'Eliminar', meeting_path(meeting.id), method: :delete, data: {confirm: 'Seguro?'}, :class => 'uk-button uk-button-text'%></p>
+            </div>
+        </div>
+        </div>
+
           <% end %>
       </tr>
     <% end %>

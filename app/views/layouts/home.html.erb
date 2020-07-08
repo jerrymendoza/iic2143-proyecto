@@ -16,59 +16,55 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
   </head>
 
-  <body>
-  <div class="bg uk-container" >
+  <body id="home">
+    <div id="home-content">
 
-<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar="mode: click">
+          <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar="mode: click">
+                  <div class="uk-navbar-left">
+                      <div id='name_app'>
+                        <h2>dccitas</h2>
+                      </div>
+                  </div>
+                  <div class="uk-navbar-right">
+                      <ul class="uk-navbar-nav">
+                              <li>
+                                  <a href="#"><span class="menu-icon" uk-icon="icon: menu; ratio: 2"></span></a>
+                                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                                      <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
+                                          <div>
+                                              <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                  <p>Bienvenido a DCCitas, donde puedes encontrar una nueva pareja, si ese no es tu interés, puedes registrarte como propetario de un local y publicar tu negocio.</p>
+                                              </ul>
+                                          </div>
+                                          <div>
+                                              <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                  <li class="uk-nav-header">¿Dueño de local?</li>
+                                                  <li><%= link_to "Registrate!", new_propietario_local_registration_path, :method => :get %> </li>
+                                                  <li><%= link_to "Login", new_propietario_local_session_path, :method => :get %></li>
+                                                  <li class="uk-nav-divider"></li>
+                                                  <li class="uk-nav-header">¿ Administrador ?</li>
+                                                  <li><%= link_to "Login", new_admin_session_path, :method => :get %></li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                  </div>
+              </nav>
+      <div class="uk-navbar-dropbar"></div>
+              
+       
+        
+        <div class="buttons">
+            <%= link_to "login matcher", new_matcher_session_path,
+                  :class => "button login", :method => :get %>
 
-    <div class="uk-navbar-left">
-        <div id='name_app'>
-          <h2>DCCitas</h2>
+            <%= link_to "registrarse", new_matcher_registration_path,
+                  :class => "button signup", :method => :get %>
         </div>
-    </div>
-    <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav">
-                <li>
-                    <a href="#"><span class="menu-icon" uk-icon="icon: menu; ratio: 2"></span></a>
-                    <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
-                        <div class="uk-navbar-dropdown-grid uk-child-width-1-2" uk-grid>
-                            <div>
-                                <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <p>Bienvenido a DCCitas, donde puedes encontrar una nueva pareja, si ese no es tu interés, puedes registrarte como propetario de un local y publicar tu negocio.</p>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="uk-nav uk-navbar-dropdown-nav">
-                                    <li class="uk-nav-header">¿Dueño de local?</li>
-                                    <li><%= link_to "Registrate!", new_propietario_local_registration_path, :method => :get %> </li>
-                                    <li><%= link_to "Login", new_propietario_local_session_path, :method => :get %></li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li class="uk-nav-header">¿ Administrador ?</li>
-                                    <li><%= link_to "Login", new_admin_session_path, :method => :get %></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-    </div>
-</nav>
-<div class="uk-navbar-dropbar"></div>
 
-<div id='container-signup'>
-<h3>Like. Match. Date.</h3>
-<p>
-  Grupo 54
-</p>
-<div class="home-buttons">
-<%= link_to "Login Matcher", new_matcher_session_path,
-      :class => "signin uk-button uk-button-primary", :method => :get %>
 
-<%= link_to "Registrarse", new_matcher_registration_path,
-      :class => "signup uk-button uk-button-primary", :method => :get %>
-
-</div>
-</div>
     </div>
   </body>
 </html>

@@ -2,10 +2,9 @@
   <strong>Gusto:</strong>
   <%= @gusto.category.nombre %>
   <%= @gusto.titulo %>
-  <%= @gusto.descripcion %>
 
 </p>
 
-<%= link_to 'Volver', gustos_path, :class => 'uk-button uk-button-text' %>
-<%= link_to 'Editar', gustos_edit_path, :class => 'uk-button uk-button-text' %>
+<%= link_to 'Volver', gustos_path, :class => 'uk-button uk-button-text' %> | 
+<%= link_to 'Editar', gustos_edit_path, :class => 'uk-button uk-button-text' %> | 
 <%= link_to 'Eliminar', gusto_path(@gusto.id), :class => 'uk-button uk-button-text', method: :delete, data: {confirm: 'Seguro?'} %>

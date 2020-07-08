@@ -1,19 +1,39 @@
-<p>
-  <strong>Matcher1:</strong>
-  <%= @match.matcher1.nombre %>
-</p>
+<div id="big-box-match" class="box-shadow">
+<div class="box-matchers">
+<div class="box-matcher">
+<% if @match.matcher1.imagen.attached? %>
+        <image src="<%=(url_for(@match.matcher1.imagen))%>" >
+      <% else %>
+        <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" >
+    <% end %>
+<span><%= @match.matcher1.nombre %></span></div>
+<div><h3>Match!</h3></div>
 
-<p>
-  <strong>Matcher2:</strong>
-  <%= @match.matcher2.nombre %>
-</p>
 
+<div class="box-matcher">
+
+<% if @match.matcher2.imagen.attached? %>
+        <image src="<%=(url_for(@match.matcher2.imagen))%>" >
+      <% else %>
+        <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" >
+    <% end %>
+<span><%= @match.matcher2.nombre %></span></div>
+
+
+</div>
+<div class="big-box-content">
 <p>
 	<% if @match.meeting %>
 		<%= @meeting.local.nombre %>
 	<% else %>
-	  <strong>¿Quieres crear una cita?</strong>
+	  <strong>Y donde nos vemos??</strong>
 	  	<%= render "meetings/form" %>
 	<% end %>
 </p>
+</div>
+</div>
+
+
+<div class="box-spotify">
+</div>
 	

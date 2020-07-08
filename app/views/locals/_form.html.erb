@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
+    <%= form.label :nombre %><br />
+    <%= form.text_field :nombre, :class => 'uk-input uk-width-1-4'%>
   </div>
 
   <div class="field">
-    <%= form.label :imagen %>
+    <%= form.label :imagen %><br />
     <%= form.file_field :imagen %>
   </div>
 
   <div class="field">
-    <%= form.label :comuna %>
-    <%= form.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
+    <%= form.label :comuna %><br />
+    <%= form.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'} , :class => 'uk-select uk-width-1-4')%>
   </div>
 
   <div class="field">
-    <%= form.label :direccion %>
-    <%= form.text_field :direccion %>
+    <%= form.label :direccion %><br />
+    <%= form.text_field :direccion, :class => 'uk-input uk-width-1-4' %>
   </div>
 
   <div class="field">
-    <%= form.label :descripcion %>
-    <%= form.text_area :descripcion %>
+    <%= form.label :descripcion %><br />
+    <%= form.text_area :descripcion, :class => 'uk-text-area uk-width-1-4' %>
   </div>
-
+  <br />
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Aceptar", class: 'uk-button uk-button-primary' %>
   </div>
 <% end %>
