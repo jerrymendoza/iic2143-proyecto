@@ -9,7 +9,7 @@ local:
 google:
   service: GCS
   project: dccitas-storage
-  credentials: <%= Rails.application.credentials.google[:GOOGLE_APPLICATION_CREDENTIALS].as_json %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
   bucket: citas-file
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
