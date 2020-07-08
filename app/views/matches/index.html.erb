@@ -3,24 +3,36 @@
 <table>
   <thead>
     <tr>
-      <th>Match con</th>
-      <th>Estado de cita</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @matches.each do |match| %>
-      <tr>
-        <td><%= if match.matcher1 != current_matcher then match.matcher1.nombre else match.matcher1.nombre end %></td>
-        <% if not match.meeting %>
-          <td><%= link_to 'Crear cita', match_path(match.id)%></td>
-        <% elsif match.meeting.aceptado_1 && match.meeting.aceptado_2 %>
-          <td><%= 'Acordada' %></td>
-        <% elsif match.meeting.aceptado_1 || match.meeting.aceptado_2 %>
-          <td><%= 'Esperando confirmación' %></td>
-        <% end %>        
-      </tr>
+    <div class="uk-card-small uk-grid-collapse uk-child-width-auto@s" uk-grid>
+    <div class="uk-card-body">
+      <% otro_matcher = if current_matcher != match.matcher1 then match.matcher1 else match.matcher2 end %>
+      <% if otro_matcher.imagen.attached? %>
+        <image class="uk-border-circle" width="80" height="80" src="<%=(url_for(otro_matcher.imagen))%>"  >
+      <% else %>
+        <image class="uk-border-circle" width="80" height="80" src="<%= asset_path 'default-matcher-image.png' %>">
+      <% end %>
+    </div>
+    <div>
+        <div class="uk-card-body">
+            <h3 class="uk-card-title"><span uk-icon="icon: heart"></span>&nbsp;&nbsp;<%= if match.matcher1 != current_matcher then match.matcher1.nombre else match.matcher2.nombre end %></h3>
+            <% if not match.meeting %>
+              <p><span uk-icon="icon: plus"></span>&nbsp;&nbsp;<%= link_to 'Crear cita', match_path(match.id), :class => 'uk-button uk-button-text'%></p>
+            <% elsif match.meeting.aceptado_1 && match.meeting.aceptado_2 %>
+              <p><span uk-icon="icon: check"></span>&nbsp;&nbsp;<%= 'Cita confirmada' %></p>
+            <% elsif match.meeting.aceptado_1 || match.meeting.aceptado_2 %>
+              <p><span uk-icon="icon: more"></span>&nbsp;&nbsp;<%= 'Esperando confirmación de cita' %></p>
+            <% end %>
+        </div>
+    </div>
+    </div>
+
+
     <%end%>
   </tbody>
 </table>
