@@ -4,8 +4,8 @@ class MeetingsController < ApplicationController
   before_action :set_locals, only: %i[new create edit update]
   after_action :enviar_aceptar_por_matcher, only: %i[create update]
 
-  def new
-  end
+  def new; end
+
   # GET /meetings
   # GET /meetings.json
   def index
