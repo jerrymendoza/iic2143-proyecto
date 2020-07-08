@@ -53,16 +53,45 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
             </div>
             <div class="right-comment comment">
             <strong>Comentarios:</strong>
-            <% @local.comentarios.each do |comentario|%>
-  
-                <%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario), :place_holder => "Editar" %> -
-                <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %> -
-                <%= comentario.matcher.nombre %>  - <%= comentario.created_at %>
+            <ul class="uk-comment-list">
+                <% @local.comentarios.each do |comentario|%>
+                  <li>
+                      <article class="uk-comment uk-visible-toggle" tabindex="-1">
+                          <header class="uk-comment-header uk-position-relative">
+                              <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                  <div class="uk-width-auto">
 
-                <% if comentario.matcher == current_matcher  || admin_signed_in? %>
-                  - <%= link_to 'Eliminar', {:controller => "comentarios", :action => "destroy", :id => comentario.id, :local_id => @local.id} ,:method=>:delete, remote: :true%>
+                                      <% if comentario.matcher.imagen.attached? %>
+                                          <img class="uk-comment-avatar" src="<%=(url_for(comentario.matcher.imagen))%>" width="80" height="80" alt="" >
+                                        <% else %>
+                                          <img src="<%= asset_path 'default-matcher-image.png' %>" width="80" height="80" alt="" class="uk-comment-avatar" >
+                                      <% end %>
+
+                                  </div>
+                                  <div class="uk-width-expand">
+                                      <h4 class="uk-comment-title uk-margin-remove"><%= comentario.matcher.nombre %></h4>
+                                      <p class="uk-comment-meta uk-margin-remove-top"><%= comentario.created_at.strftime("%H:%M %d-%m-%Y") %>
+                                      <br>
+                                      valoracion local: <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %>
+                                      </p>
+                                      
+                                  </div>
+                              </div>
+                              <div class="uk-position-top-right uk-position-small uk-hidden-hover"></div>
+                          </header>
+                          <div class="uk-comment-body">
+                              <p><%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario) %></p>
+                          </div>
+                      </article>
+
+                      <% if comentario.matcher == current_matcher  || admin_signed_in? %>
+                      <%= link_to 'Eliminar', {:controller => "comentarios", :action => "destroy", :id => comentario.id, :local_id => @local.id} ,:method=>:delete, remote: :true , :class => 'uk-button uk-button-text'%>
+                      <% end %>
+                  </li>
                 <% end %>
-            <% end %>
+            </ul>
+
+
              </div>
 
 

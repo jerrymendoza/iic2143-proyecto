@@ -455,13 +455,14 @@
 .box-spotify {
   margin-left: -100px;
   background-color: #dee1e6;
-  height: calc(100% - (295px + 80px));;
+  height: 100%;
   padding-top: 40px;
 
   .comment {
     width: 430px;
     float:left;
-    margin-right:10px
+    margin-right:10px;
+    padding-right:20px;
   }
   .left-comment {
     margin-left:100px;
