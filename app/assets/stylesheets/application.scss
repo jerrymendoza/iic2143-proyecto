@@ -196,7 +196,7 @@
 
 
 #home {
-  background: url(home.jpg) no-repeat center center #000;
+  background: image-url("home.jpg") no-repeat center center #000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -329,15 +329,15 @@
 }
 
 #matcher-home1 {
-  background: url(cap1.png) no-repeat center center;
+  background: image-url("cap1.png") no-repeat center center;
 }
 
 #matcher-home2 {
-  background: url(cap2.png) no-repeat center center;
+  background: image-url("cap2.png") no-repeat center center;
 }
 
 #matcher-home3 {
-  background: url(cap3.png) no-repeat center center;
+  background: image-url("cap3.png") no-repeat center center;
 }
 
 .content-card-matcher {
@@ -607,13 +607,13 @@
 }
 
 #local-home1 {
-  background: url(bares-home1.png) no-repeat center center;
+  background: image-url("bares-home1.png") no-repeat center center;
 }
 
 #local-home2 {
-  background: url(bares-home2.png) no-repeat center center;
+  background: image-url("bares-home2.png") no-repeat center center;
 }
 
 #local-home3 {
-  background: url(bares-home3.png) no-repeat center center;
+  background: image-url("bares-home3.png") no-repeat center center;
 }

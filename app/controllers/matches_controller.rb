@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-	before_action :authenticate_matcher!, only: %i[show index]
+  before_action :authenticate_matcher!, only: %i[show index]
 
   def index
     @matches = Match.where(matcher1: current_matcher).or(Match.where(matcher2: current_matcher))
