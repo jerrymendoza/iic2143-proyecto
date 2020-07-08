@@ -8,8 +8,10 @@
       <tr>
 
         <td><span uk-icon="icon: location"></span>&nbsp;<%= link_to comuna.name, comuna, :class => 'uk-button uk-button-text' %>&nbsp&nbsp&nbsp&nbsp</td>
-        <td>&nbsp&nbsp&nbsp&nbsp<span uk-icon="icon: cog"></span>&nbsp; <%= link_to 'Editar', edit_comuna_path(comuna), :class => 'uk-button uk-button-text' %>&nbsp&nbsp| </td>
-        <td>&nbsp&nbsp<span uk-icon="icon: trash"></span>&nbsp; <%= link_to 'Eliminar', comuna,:class => 'uk-button uk-button-text', method: :delete, data: { confirm: 'Seguro?' } %></td>
+        <% if admin_signed_in? %>
+          <td>&nbsp&nbsp&nbsp&nbsp<span uk-icon="icon: cog"></span>&nbsp; <%= link_to 'Editar', edit_comuna_path(comuna), :class => 'uk-button uk-button-text' %>&nbsp&nbsp| </td>
+          <td>&nbsp&nbsp<span uk-icon="icon: trash"></span>&nbsp; <%= link_to 'Eliminar', comuna,:class => 'uk-button uk-button-text', method: :delete, data: { confirm: 'Seguro?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
