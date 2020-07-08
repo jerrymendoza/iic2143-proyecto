@@ -24,7 +24,14 @@
 <div class="big-box-content">
 <p>
 	<% if @match.meeting %>
-		<%= @meeting.local.nombre %>
+    Local:<br />
+		<%= @meeting.local.nombre %> <br /><br />
+
+    Fecha: <br />
+    <%= @meeting.local.created_at.strftime("%d-%m-%Y") %> <br /><br />
+
+    Hora: <br />
+    <%= @meeting.local.created_at.strftime("%H:%M") %> <br />
 	<% else %>
 	  <strong>Y donde nos vemos??</strong>
 	  	<%= render "meetings/form" %>

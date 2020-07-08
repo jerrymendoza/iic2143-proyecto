@@ -4,6 +4,8 @@ class MeetingsController < ApplicationController
   before_action :set_locals, only: %i[new create edit update]
   after_action :enviar_aceptar_por_matcher, only: %i[create update]
 
+  def new
+  end
   # GET /meetings
   # GET /meetings.json
   def index
@@ -33,7 +35,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @match, notice: 'Meeting was successfully created.' }
+        format.html { redirect_to @match, notice: 'Tu cita fue creada.' }
         format.json { render :show, status: :created, location: @match }
       else
         format.html { render :new }
