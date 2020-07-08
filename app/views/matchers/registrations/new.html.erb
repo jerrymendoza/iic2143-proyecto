@@ -18,12 +18,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", :class => 'uk-input uk-width-1-4' %>
+    <%= f.password_field :password, autocomplete: "nueva-contraseña", :class => 'uk-input uk-width-1-4' %>
   </div>
 
   <div class="field">
     <%= f.label :confirmar_contraseña %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => 'uk-input uk-width-1-4' %>
+    <%= f.password_field :password_confirmation, autocomplete: "nueva-contraseña", :class => 'uk-input uk-width-1-4' %>
   </div>
 
   <br>

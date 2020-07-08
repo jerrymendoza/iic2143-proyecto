@@ -24,10 +24,10 @@
         <div>
             <div class="uk-card-body">
                 <h3 class="uk-card-title"><span uk-icon="icon: location"></span>&nbsp;<%= meeting.local.nombre %></h3>
-                <p><span uk-icon="icon: calendar"></span>&nbsp;<%= meeting.fecha %></p>
-                <p><span uk-icon="icon: clock"></span>&nbsp;<%= meeting.hora %></p>
+                <p><span uk-icon="icon: calendar"></span>&nbsp;&nbsp;<%= meeting.fecha.strftime("%d-%m-%Y") %></p>
+                <p><span uk-icon="icon: clock"></span>&nbsp;&nbsp;<%= meeting.hora.strftime("%H:%M") %></p>
                 <% if (not(meeting.aceptado_1) && meeting.match.matcher1 == current_matcher) || (not(meeting.aceptado_2) && meeting.match.matcher2 == current_matcher) %>
-                  <p><%= link_to 'Aceptas?', {:controller => "meetings", :action => "enviar_aceptar_por_matcher", :id => meeting.id}, :method => :patch, remote: true, :class => 'uk-button uk-button-text'%></p>
+                  <p><span uk-icon="icon: question"></span>&nbsp;&nbsp;<%= link_to 'Aceptas?', {:controller => "meetings", :action => "enviar_aceptar_por_matcher", :id => meeting.id}, :method => :patch, remote: true, :class => 'uk-button uk-button-text'%></p>
                 <% elsif meeting.aceptado_1 && meeting.aceptado_2 %>
                   <p><span uk-icon="icon: check"></span>&nbsp; Respuesta confirmada</p>
                 <% else %>
