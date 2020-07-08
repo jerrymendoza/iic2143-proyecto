@@ -56,9 +56,13 @@
     <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
   </div>
 
+  <div class="field">
+    Gustos
+  </div>
+
   <ul uk-accordion>
     <% @categories.each do |category| %>
-      <li class="uk-open">
+      <li class="uk-close">
         <a class="uk-accordion-title" href="#"><%= category.nombre %></a>
         <div class="uk-accordion-content">
         <% category.gustos.each do |gusto| %>
