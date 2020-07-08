@@ -35,6 +35,10 @@
   color:black
 }
 
+.color-white {
+  color:white
+}
+
   body, html {
     height: 100%;
     background-color: #F4F4F8 !important;
@@ -303,6 +307,10 @@
   color:black;
   .text {
     text-align: center;
+    width: 1018px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+
   }
 
   .text > span {
@@ -336,7 +344,7 @@
 
   position: absolute;
   height: 155px;
-  width: 230px;
+  width: 270px;
   margin-left: 18px;
   bottom: 0;
 
@@ -553,4 +561,59 @@
     }
 
   }
+}
+
+
+
+//// HOME LOCAL 
+
+#content-cards-local {
+  display: flex;
+  position: relative;
+}
+.propietario-bg {
+  background-color: #212122;
+}
+
+#content-home-local {
+  color:black;
+  .text {
+    text-align: center;
+    width: 1018px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    z-index: 2000;
+  }
+
+  .text > span {
+    font-family: 'ChaletNY';
+    font-size: 60px;
+  }
+  
+
+}
+
+.local-home {
+  min-width: 310px;
+  width: 310px;
+  height: 427px;
+  margin-right:44px;
+ 
+  border-radius: 18px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#local-home1 {
+  background: url(bares-home1.png) no-repeat center center;
+}
+
+#local-home2 {
+  background: url(bares-home2.png) no-repeat center center;
+}
+
+#local-home3 {
+  background: url(bares-home3.png) no-repeat center center;
 }

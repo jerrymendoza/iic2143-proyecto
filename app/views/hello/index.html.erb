@@ -10,18 +10,21 @@
     <div id="content-cards-matcher">
     <div class="matcher-home" id="matcher-home1">
       <div class="content-card-matcher">
-      <span>1.like<span>
-      <p>kljsljhd dslkhds jdshsd ldlkjdhs dskdskl</p>
+      <span>1. Like<span>
+      <p>Busca entre nuestros matcher al que pueda ser una pareja ideal para ti, puedes filtrar y ver sus caracteristicas, ¡Incluso sus canciones de Spotify! </p>
       </div>
     </div>
     <div class="matcher-home" id="matcher-home2">
       <div class="content-card-matcher">
-      <span>2.match<span>
+      <span>2. Match<span>
+      <p>¡Enhorabuena! Un matcher se interesó en ti y te ha propuesto una cita que encontraras en meetings, podrás confirmar, editar o rechazar esta invitación.</p>
       </div>
     </div>
     <div class="matcher-home" id="matcher-home3">
     <div class="content-card-matcher">
-    <span>3.date<span>
+    <span>3. Date<span>
+      <p>DCCitas te ofrecerá un abanico de locales revisados por nuestros administradores. ¡Todos con un gran panorama! Lo otro ya depende de ti...
+      ¡Buena suerte matcher!</p>
     </div>
     </div>
     </div>
@@ -59,9 +62,35 @@
 <% if propietario_local_signed_in? %>
   <% if current_propietario_local %>
   <div id="content-home-local">
-    <div class="local-home" id="local-home1"></div>
-    <div class="local-home" id="local-home2"></div>
-    <div class="local-home" id="local-home3"></div>
+    <div class="text">
+      <span class="color-date">date: </span>
+      <span class="color-white">tu puedes ser el dónde...</span>
+    </div>
+  
+    <div id="content-cards-local">
+      <div class="local-home" id="local-home1">
+        <div class="content-card-matcher">
+        <span>1. Conviertete en un destino<span>
+        <p>Añade un nuevo local a nuestra plataforma y conviertete en un buen panorama para nuestros matchers.</p>
+        </div>
+      </div>
+
+      <div class="local-home" id="local-home2">
+        <div class="content-card-matcher">
+          <span>2. Revisa como vas<span>
+          <p>Tus locales recibirán comentarios de quienes los visitan, esto acompañado de una valoración de 1 a 5. ¡Una buena fuente de feedback! </p>
+        </div>
+      </div>
+
+      <div class="local-home" id="local-home3">
+        <div class="content-card-matcher">
+          <span>3. Encuentra una oportunidad<span>
+          <p>Puedes revisar a tu competencia, puedes ver los locales presentes en cada comuna y sus detalles. ¡Encuentra una oportunidad para expandir tus negocios! </p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
   <% end %>
 <% end %>
