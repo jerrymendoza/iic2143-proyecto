@@ -1,16 +1,17 @@
- class LocalsController < ApplicationController
-  before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local verificar_propietario_local]
+class LocalsController < ApplicationController
+  before_action :set_local, only: %i[show edit update destroy enviar_aceptar_local verificar_propietario_local comprobar_tuvo_cita]
   before_action :authenticate_admin_propietario_local!, only: %i[edit update destroy]
   before_action :verificar_propietario_local, only: %i[edit update destroy]
   before_action :authenticate_propietario_local!, only: %i[new create index_locals_de_propietario_local]
   before_action :set_comunas, only: %i[new create edit]
   before_action :authenticate_admin!, only: %i[index_no_aceptados enviar_aceptar_local]
-
+  before_action :comprobar_tuvo_cita, only: %i[show]
+  before_action :authenticate_todos!, only: %i[show index]
 
   # GET /locals
   # GET /locals.json
   def index
-    @locals = Local.where(aceptado: true)
+    @locals = Local.buscar(params[:busqueda])
   end
 
   def index_no_aceptados
@@ -23,8 +24,22 @@
 
   # GET /locals/1
   # GET /locals/1.json
-  def show    
+  def show
     @comentario = Comentario.new
+    suma = 0
+    cont = 0
+    @local.comentarios.each do |comentario|
+      if comentario.valoracion
+        suma += comentario.valoracion
+        cont += 1
+      end
+    end
+    @promedio = if cont != 0
+                  suma_f = suma.to_f
+                  (suma_f / cont.to_f).round 1
+                else
+                  0
+                end
   end
 
   # GET /locals/new
@@ -76,7 +91,8 @@
     end
   end
 
-  def enviar_aceptar_local #indica al model aceptar el local
+  def enviar_aceptar_local
+    # indica al model aceptar el local
     @local.aceptar_local
     respond_to do |format|
       format.html { redirect_to locals_solicitudes_path, notice: 'Se ha aceptado el local.' }
@@ -92,6 +108,22 @@
 
   private
 
+  def comprobar_tuvo_cita
+    @tuvo_cita = false
+    if current_matcher
+      current_matcher.matcher1_matches.each do |match_i|
+        if @local.meetings.include? match_i.meeting
+          @tuvo_cita = true
+        end
+      end
+      current_matcher.matcher2_matches.each do |match_i|
+        if @local.meetings.include? match_i.meeting
+          @tuvo_cita = true
+        end
+      end
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_local
     @local = Local.find(params[:id])
@@ -103,6 +135,6 @@
 
   # Only allow a list of trusted parameters through.
   def local_params
-    params.require(:local).permit(:nombre, :comuna_id, :direccion, :descripcion, :imagen)
+    params.require(:local).permit(:nombre, :comuna_id, :direccion, :descripcion, :imagen, :busqueda)
   end
 end

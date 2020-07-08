@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :local %>
+    <%= form.label :local, "Local:" %>
     <%= form.collection_select(:local_id, @locals, :id, :nombre, {:prompt => 'Seleccionar Local'}) %>
   </div>
 
   <div class="field">
-    <%= form.label :fecha %>
-    <%= form.date_select :fecha %>
+    <%= form.label :fecha, "Fecha:" %>
+    <%= form.date_select :fecha, class: "uk-date-time uk-date-timeuk-date-time uk-width-1-2" %>
   </div>
 
   <div class="field">
-    <%= form.label :hora %>
-    <%= form.time_select :hora %>
+    <%= form.label :hora, "Hora:" %>
+    <%= form.time_select :hora, class: "uk-time uk-width-1-2" %>
   </div>
-
+  <br />
   <div class="actions">
-    <%= form.submit "Crear Cita" %>
+    <%= form.submit "Cita!", class: 'uk-button uk-button-primary' %>
   </div>
 <% end %>

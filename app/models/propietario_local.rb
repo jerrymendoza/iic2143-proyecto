@@ -7,6 +7,6 @@ class PropietarioLocal < ApplicationRecord
   before_destroy :eliminar_relaciones
 
   def eliminar_relaciones
-  	self.locals.destroy_all
+    locals.destroy_all
   end
 end

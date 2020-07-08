@@ -23,11 +23,15 @@
 
   <div class="app" uk-grid>
 
-        <div class="left-side uk-width-1-4">
+        <div class="left-side">
                 <%= render "partials/menu" %>
         </div>
+        <% if propietario_local_signed_in? && current_page?(root_path) %>
+          <div class="right-side propietario-bg">
+         <% else %>
+          <div class="right-side">
+        <% end %>
 
-        <div class="right-side uk-width-3-4">
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
         <% end %>

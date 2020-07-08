@@ -1,6 +1,40 @@
-<h1>Editing Meeting</h1>
+<h1>Editar Meeting</h1>
 
-<%= render 'form', meeting: @meeting %>
+<div id="big-box-match" class="box-shadow">
+<div class="box-matchers">
+<div class="box-matcher">
+<% if @meeting.match.matcher1.imagen.attached? %>
+        <image src="<%=(url_for(@meeting.match.matcher1.imagen))%>" >
+      <% else %>
+        <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" >
+    <% end %>
+<span><%= @meeting.match.matcher1.nombre %></span></div>
+<div><h3>Match!</h3></div>
 
-<%= link_to 'Show', @meeting %> |
-<%= link_to 'Back', meetings_path %>
+
+<div class="box-matcher">
+
+<% if @meeting.match.matcher2.imagen.attached? %>
+        <image src="<%=(url_for(@meeting.match.matcher2.imagen))%>" >
+      <% else %>
+        <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" >
+    <% end %>
+<span><%= @meeting.match.matcher2.nombre %></span></div>
+
+
+</div>
+<div class="big-box-content">
+<p>
+	<strong>Y donde nos vemos??</strong>
+	<%= render "meetings/form" %>
+
+</p>
+</div>
+</div>
+
+
+<div class="box-spotify">
+</div>
+
+<%= link_to 'Mostrar', @meeting.match, :class => 'uk-button uk-button-text' %> |
+<%= link_to 'Volver', meetings_path, :class => 'uk-button uk-button-text' %>

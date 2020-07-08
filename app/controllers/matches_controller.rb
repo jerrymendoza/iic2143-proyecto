@@ -1,17 +1,14 @@
 class MatchesController < ApplicationController
+  before_action :authenticate_matcher!, only: %i[show index]
 
-	def index
-		@matches = Match.where(matcher1: current_matcher).or(Match.where(matcher2: current_matcher))
-	end 
+  def index
+    @matches = Match.where(matcher1: current_matcher).or(Match.where(matcher2: current_matcher))
+  end
 
-    def show
-        @match = Match.find(params[:id])
-        @locals = Local.all
-        @meeting = Meeting.new
-        
-        if @match.meeting
-            @meeting = @match.meeting
-        end
-    end
-    
+  def show
+    @match = Match.find(params[:id])
+    @meeting = Meeting.new
+    @locals = Local.where(aceptado: true)
+    @meeting = @match.meeting if @match.meeting
+  end
 end

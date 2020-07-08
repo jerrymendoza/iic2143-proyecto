@@ -17,7 +17,21 @@ AllCops:
     - bin/**
 
 Metrics/LineLength:
-  Max: 100
+  Max: 150
+Metrics/BlockLength:
+  Max: 50
+Metrics/MethodLength:
+  Max: 30
+Metrics/AbcSize:
+  Max: 50
+Metrics/PerceivedComplexity:
+  Max: 10
+Metrics/ClassLength:
+  Max: 110
+Style/IfUnlessModifier:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false

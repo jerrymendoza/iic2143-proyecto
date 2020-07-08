@@ -1,29 +1,37 @@
-
 <% if matcher_signed_in? %>
   <% if current_matcher %>
-    <h4>Hola Matcher! </h4>
-    <div class="uk-position-relative uk-visible-toggle uk-light uk-width-3-5" tabindex="-1" uk-slideshow >
+    <div id="content-home-matcher">
 
-    <ul class="uk-slideshow-items">
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
-        </li>
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion-1.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !* -*, !* +*">
-        </li>
-        <li>
-            <img data-src="<%= asset_path 'imagen-transicion-2.jpg' %>" width="" height="" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
-        </li>
-    </ul>
-
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
+    <div class="text">
+      <span>like<span>
+      <span>match<span>
+      <span class="color-date">date<span>
+    </div>
+    <div id="content-cards-matcher">
+    <div class="matcher-home" id="matcher-home1">
+      <div class="content-card-matcher">
+      <span>1. Like<span>
+      <p>Busca entre nuestros matcher al que pueda ser una pareja ideal para ti, puedes filtrar y ver sus caracteristicas, ¡Incluso sus canciones de Spotify! </p>
+      </div>
+    </div>
+    <div class="matcher-home" id="matcher-home2">
+      <div class="content-card-matcher">
+      <span>2. Match<span>
+      <p>¡Enhorabuena! Un matcher se interesó en ti y te ha propuesto una cita que encontraras en meetings, podrás confirmar, editar o rechazar esta invitación.</p>
+      </div>
+    </div>
+    <div class="matcher-home" id="matcher-home3">
+    <div class="content-card-matcher">
+    <span>3. Date<span>
+      <p>DCCitas te ofrecerá un abanico de locales revisados por nuestros administradores. ¡Todos con un gran panorama! Lo otro ya depende de ti...
+      ¡Buena suerte matcher!</p>
+    </div>
+    </div>
+    </div>
   </div>
 
   <% end %>
 <% end %>
-
 
 <% if admin_signed_in? %>
   <% if current_admin %>
@@ -53,24 +61,35 @@
 
 <% if propietario_local_signed_in? %>
   <% if current_propietario_local %>
-    <h4>Hola Propietario de Local! </h4>
-    
-    <div class="uk-position-relative uk-visible-toggle uk-light uk-width-3-5" tabindex="-1" uk-slideshow >
+  <div id="content-home-local">
+    <div class="text">
+      <span class="color-date">date: </span>
+      <span class="color-white">tu puedes ser el dónde...</span>
+    </div>
+  
+    <div id="content-cards-local">
+      <div class="local-home" id="local-home1">
+        <div class="content-card-matcher">
+        <span>1. Conviertete en un destino<span>
+        <p>Añade un nuevo local a nuestra plataforma y conviertete en un buen panorama para nuestros matchers.</p>
+        </div>
+      </div>
 
-    <ul class="uk-slideshow-items">
-        <li>
-            <img data-src="assets/imagen-transicion.jpg" width="" height="" alt="" uk-cover uk-img="target: !ul > :last-child, !* +*">
-        </li>
-        <li>
-            <img data-src="assets/imagen-transicion-1.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !* +*">
-        </li>
-        <li>
-            <img data-src="assets/imagen-transicion-2.jpg" width="" height="" alt="" uk-cover uk-img="target: !* -*, !ul > :first-child">
-        </li>
-    </ul>
+      <div class="local-home" id="local-home2">
+        <div class="content-card-matcher">
+          <span>2. Revisa como vas<span>
+          <p>Tus locales recibirán comentarios de quienes los visitan, esto acompañado de una valoración de 1 a 5. ¡Una buena fuente de feedback! </p>
+        </div>
+      </div>
 
-    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+      <div class="local-home" id="local-home3">
+        <div class="content-card-matcher">
+          <span>3. Encuentra una oportunidad<span>
+          <p>Puedes revisar a tu competencia, puedes ver los locales presentes en cada comuna y sus detalles. ¡Encuentra una oportunidad para expandir tus negocios! </p>
+        </div>
+      </div>
+    </div>
+
 
   </div>
   <% end %>

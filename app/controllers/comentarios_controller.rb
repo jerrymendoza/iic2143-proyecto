@@ -2,6 +2,7 @@ class ComentariosController < ApplicationController
   before_action :set_comentario, only: %i[edit show update destroy verificar_matcher]
   before_action :set_local
   before_action :authenticate_matcher!
+  before_action :authenticate_todos!, only: %i[show index]
   before_action only: %i[edit update destroy] do
     verificar_matcher(@comentario)
   end
@@ -11,7 +12,6 @@ class ComentariosController < ApplicationController
   def create
     @comentario = current_matcher.comentarios.new(comentario_params)
     @comentario.local = @local
-
     respond_to do |format|
       if @comentario.save
         format.html { redirect_to @local, notice: 'Comentario creado.' }
@@ -29,11 +29,10 @@ class ComentariosController < ApplicationController
     respond_to do |format|
       if @comentario.update(comentario_params)
         format.html { redirect_to @local, notice: 'Comentario fue editado.' }
-        format.json { respond_with_bip(@comentario) }
       else
         format.html { render :edit }
-        format.json { respond_with_bip(@comentario) }
       end
+      format.json { respond_with_bip(@comentario) }
     end
   end
 
