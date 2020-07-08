@@ -19,4 +19,12 @@ class Local < ApplicationRecord
   def aceptar_local
     self.update_attributes(:aceptado => true)
   end
+
+  def self.buscar busqueda
+    if busqueda
+      Local.where("aceptado = ? AND nombre LIKE ?", true, "%#{busqueda}%")
+    else
+      Local.where(aceptado: true)
+    end
+  end
 end

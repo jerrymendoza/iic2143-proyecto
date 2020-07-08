@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verificar_matcher objeto
-    unless current_matcher == objeto.matcher
+    unless current_matcher == objeto.matcher || admin_signed_in?
       redirect_to request.referrer, notice: 'No tienes permisos para realizar esta acción'
     end
   end
