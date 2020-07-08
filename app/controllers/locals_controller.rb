@@ -10,7 +10,7 @@
   # GET /locals
   # GET /locals.json
   def index
-    @locals = Local.where(aceptado: true)
+    @locals = Local.buscar(params[:busqueda])
   end
 
   def index_no_aceptados
@@ -116,6 +116,6 @@
 
   # Only allow a list of trusted parameters through.
   def local_params
-    params.require(:local).permit(:nombre, :comuna_id, :direccion, :descripcion, :imagen)
+    params.require(:local).permit(:nombre, :comuna_id, :direccion, :descripcion, :imagen, :busqueda)
   end
 end
