@@ -4,13 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, :class => 'uk-input uk-width-1-6'%>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'uk-input uk-width-1-6' %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label :Contraseña %> <i>(Dejar en blanco si no queires cambiar)</i><br />
-    <%= f.password_field :password, autocomplete: "Nueva contraseña" %>
+    <%= f.password_field :password, autocomplete: "Nueva contraseña", :class => 'uk-input uk-width-1-6' %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> caracteres mínimo</em>
@@ -28,38 +28,51 @@
 
   <div class="field">
     <%= f.label :Confirmación_contraseña %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "Nueva contraseña" %>
+    <%= f.password_field :password_confirmation, autocomplete: "Nueva contraseña", :class => 'uk-input uk-width-1-6' %>
+  </div>
+
+  <br />
+  <div class="field">
+    <%= f.label :edad %> <br />
+    <%= f.number_field :edad, :class => 'uk-input uk-width-1-6' %>
   </div>
 
   <div class="field">
-    <%= f.label :edad %>
-    <%= f.number_field :edad %>
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono, :class => 'uk-input uk-width-1-6' %>
   </div>
 
   <div class="field">
-    <%= f.label :rut %>
-    <%= f.text_field :rut %>
+    <%= f.label :rut %><br />
+    <%= f.text_field :rut, :class => 'uk-input uk-width-1-6' %>
   </div>
 
   <div class="field">
-    <%= f.label :imagen %>
+    <%= f.label :imagen %><br />
     <%= f.file_field :imagen %>
   </div>
 
   <div class="field">
-    <%= f.label :telefono %>
-    <%= f.text_field :telefono %>
+    <%= f.label :comuna %><br />
+    <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}, :class => 'uk-select uk-width-1-6') %>
   </div>
 
   <div class="field">
-    <%= f.label :comuna %>
-    <%= f.collection_select(:comuna_id, @comunas, :id, :name, {:prompt => 'Seleccionar Comuna'}) %>
+    <%= f.label :genero %><br />
+    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}, :class => 'uk-select uk-width-1-6') %>
   </div>
 
   <div class="field">
-    Gustos
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion, class: 'uk-text-area uk-width-1-2' %> 
   </div>
 
+  <div class="field">
+    <%= f.label :Contraseña_actual %> <i>(Necesitamos tu contraseña actual para realizar cambios)</i><br />
+    <%= f.password_field :current_password, autocomplete: "Contraseña actual", :class => 'uk-input uk-width-1-6' %>
+  </div>
+
+  <%= f.label :gustos %>
   <ul uk-accordion>
     <% @categories.each do |category| %>
       <li class="uk-close">
@@ -77,29 +90,15 @@
     <% end %>
   </ul>
 
-  <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_area :descripcion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :genero %>
-    <%= f.select(:genero, ['Hombre', 'Mujer'], {:prompt => 'Seleccionar Género'}) %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :Contraseña_actual %> <i>(Necesitamos tu contraseña actual para realizar cambios)</i><br />
-    <%= f.password_field :current_password, autocomplete: "Contraseña actual" %>
-  </div>
+  <br />
 
   <div class="actions">
-    <%= f.submit "Actualizar" %>
+    <%= f.submit "Actualizar", class: 'uk-button uk-button-primary' %>
   </div>
 <% end %>
 
 <h3>Cancelar mi cuenta</h3>
 
-<p>¿No estas a gusto? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete %></p>
+<p>¿No estas a gusto? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Seguro?" }, method: :delete, class: 'uk-button uk-button-primary'%></p>
 
 <%= link_to "Volver", :back, :class => 'uk-button uk-button-text' %>
