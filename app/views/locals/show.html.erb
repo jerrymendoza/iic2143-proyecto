@@ -2,58 +2,72 @@
 https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042-->
 
 <div id="big-box-local" class="box-shadow">
-  <div>
+  <div class="box-img">
     <% if @local.imagen.attached? %>
         <image src="<%=(url_for(@local.imagen))%>" >
       <% else %>
         <image src="<%= asset_path 'default-matcher-image.png' %>" alt="" >
     <% end %>
   </div>
+
   <div class="big-box-content">
-    <p>
-      <strong>Nombre:</strong>
+    <div class="item">
+      <span>nombre:</span>
       <%= @local.nombre %>
-      <strong>Comuna:</strong>
+    </div>
+    <div class="item">
+      <span>comuna:</span>
       <%= @local.comuna.name if not @local.comuna.nil? %>
-      <strong>Email:</strong>
+    </div>
+    <div class="item">
+      <span>email:</strong>
       <%= @local.propietario_local.email %>
-      </p>
-      <p>
-        <strong>Direccion:</strong>
+    </div>
+    <div class="item">
+        <span>direccion:</span>
         <%= @local.direccion %>
-      </p>
-      <p>
-        <strong>Descripcion:</strong>
+    </div>
+    <div class="item">
+        <span>descripcion:</span>
         <%= @local.descripcion %>
-      </p>
-      total meetings: <%= @local.meetings.length %>
+    </div>
+    <div class="item">
+      <span>total meetings:</span> 
+      <%= @local.meetings.length %>
+    </div>
+    <div class="item">
+      <span>valoracion:</span> 
+      <%= @promedio %>
+    </div>
   </div>
 </div>
 
 <div class="box-spotify">
+
+
+
         <% if @local.aceptado %>
-          <p>
-            <strong>Comentarios:</strong>
+  
+            <div class="left-comment comment">
             <%= render "comentarios/form" %>
+            </div>
+            <div class="right-comment comment">
+            <strong>Comentarios:</strong>
             <% @local.comentarios.each do |comentario|%>
-              <div>
+  
                 <%= best_in_place_if comentario.matcher == current_matcher, comentario, :contenido, type: :textarea, :url => local_comentario_url(@local, comentario), :place_holder => "Editar" %> -
                 <%= best_in_place_if comentario.matcher == current_matcher, comentario, :valoracion, :url => local_comentario_url(@local, comentario) %> -
                 <%= comentario.matcher.nombre %>  - <%= comentario.created_at %>
 
-                <% if comentario.matcher == current_matcher %>
+                <% if comentario.matcher == current_matcher  || admin_signed_in? %>
                   - <%= link_to 'Eliminar', {:controller => "comentarios", :action => "destroy", :id => comentario.id, :local_id => @local.id} ,:method=>:delete, remote: :true%>
                 <% end %>
-              </div>
             <% end %>
-          </p>
+             </div>
+
+
+
         <% end %>
-
-        <p>
-          <strong>Aceptado:</strong>
-          <%= @local.aceptado %>
-        </p>
-
         <%  if @local.propietario_local == current_propietario_local %>
           <%= link_to 'Editar', edit_local_path(@local) %> |
         <% end %>
@@ -64,9 +78,6 @@ https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rail
         <%  if admin_signed_in? %>
           <%= link_to 'Solicitudes', locals_solicitudes_path %> |
           <%= link_to 'Locales', locals_path %>
-        <% end %>
-        <%  if matcher_signed_in? %>
-          <%= link_to 'Volver', locals_path %>
         <% end %>
 </div>
 
