@@ -37,7 +37,7 @@
 | Rubocop |2 | 1.5 | Tienen pocas ofensas pero aún les quedaban algunas |
 | Trello | 2 | 2 ||
 | Gitflow | 2 | 2 ||
-| **Nota** | 7| 5.24||
+| **Nota** | 7| 6.25||
 
 ### Sprint 3
 
@@ -49,4 +49,4 @@
 | Rubocop |3 | 0 | Varias ofensas encontradas |
 | Trello | 2 | 2 ||
 | Gitflow | 3 | 3 ||
-| **Nota** | 7| 6.25||
+| **Nota** | 7| 5.24||
