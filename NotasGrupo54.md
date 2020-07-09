@@ -37,4 +37,16 @@
 | Rubocop |2 | 1.5 | Tienen pocas ofensas pero aún les quedaban algunas |
 | Trello | 2 | 2 ||
 | Gitflow | 2 | 2 ||
+| **Nota** | 7| 5.24||
+
+### Sprint 3
+
+| Item | Puntaje Máximo | Puntaje obtenido | Explicación |
+| ------ | ------ |------|------|
+| Aplicación en Heroku | 1 |1 | |
+| Features logradas| 3 | 2 | Falta búsqueda de locales. Falta que un local sepa cuantas citas ha concretado .Falta que el administrador modere los comentarios |
+| Calidad de las features| 5 | 4 | La página de inicio para no registrados no es llamativa. La valoración para los locales no se demuestra (ej. con estrellas)|
+| Rubocop |3 | 0 | Varias ofensas encontradas |
+| Trello | 2 | 2 ||
+| Gitflow | 3 | 3 ||
 | **Nota** | 7| 6.25||
