@@ -50,3 +50,13 @@
 | Trello | 2 | 2 ||
 | Gitflow | 3 | 3 ||
 | **Nota** | 7| 5.24||
+
+### Revisión Final
+
+| Item | Puntaje Máximo | Puntaje obtenido | Explicación |
+| ------ | ------ |------|------|
+| Aplicación en Heroku | 4 |4 | |
+| Completitud de funcionalidades | 8 | 8 ||
+| Enfoque en valor para usuarios| 6 | 6 ||
+| Vistas de la aplicación (front-end) |4 | 4 | |
+| **Nota** | 7| 7||
