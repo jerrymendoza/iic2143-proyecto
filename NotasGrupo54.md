@@ -60,3 +60,16 @@
 | Enfoque en valor para usuarios| 6 | 6 ||
 | Vistas de la aplicación (front-end) |4 | 4 | |
 | **Nota** | 7| 7||
+
+## Demo
+| Item | Puntaje Máximo | Puntaje obtenido | Explicación |
+| ------ | ------ |------|------|
+| Funcionalidad | 7 |7 | |
+| Calidad y diseño | 7 | 7 ||
+| Presentación | 7 | 6.5 ||
+| **Nota Profesor** | 7| 6.75 ||
+| Funcionalidad | 7 | 7 | |
+| Calidad y diseño | 7 | 7 ||
+| Presentación | 7 | 7 ||
+| **Nota Ayudante** | 7| 7 ||
+| **Nota Final** | 7| 6.88 ||
